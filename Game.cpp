@@ -20,6 +20,7 @@ Game::Game()
 		0 // window behaviour flags
 	);
 
+
 	if (!m_Window)
 	{
 		printf("WINDOW initialisation failed: %s\n", SDL_GetError());
@@ -34,6 +35,7 @@ Game::Game()
 		m_Window,
 		-1,
 		0
+
 	);
 
 	if (!m_Renderer)
@@ -46,7 +48,7 @@ Game::Game()
 	}
 
 	m_monster = new Bitmap(m_Renderer, "assets/monster.bmp", 100, 100);
-	m_monsterTrans	= new Bitmap(m_Renderer, "assets/monsterTrans.bmp", 200, 100);
+	m_monsterTrans = new Bitmap(m_Renderer, "assets/monsterTrans.bmp", 200, 100);
 	m_monsterTransKeyed = new Bitmap(m_Renderer, "assets/monsterTrans.gmp", 300, 100, true);
 
 

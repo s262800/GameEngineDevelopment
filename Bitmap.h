@@ -2,9 +2,9 @@
 
 #include <string>
 
-struct SDL_Surface;
-struct SDL_Texture;
-struct SDL_Renderer;
+class SDL_Surface;
+class SDL_Texture;
+class SDL_Renderer;
 
 class Bitmap
 {
@@ -17,7 +17,7 @@ private:
 	int m_x, m_y;
 
 public:
-	Bitmap(SDL_Renderer* renderer, std::string fileNamee, int xpos, int ypos, bool useTransparency = false);
+	Bitmap(SDL_Renderer* renderer, std::string fileName, int xpos, int ypos, bool useTransparency = false);
     ~Bitmap();
 
 	void Draw();

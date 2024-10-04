@@ -1,5 +1,6 @@
 #include "Input.h"
 
+
 void Input::Update(void)
 {
 	while (SDL_PollEvent(&m_event) != NULL)

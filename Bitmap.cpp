@@ -13,8 +13,9 @@ Bitmap::Bitmap(SDL_Renderer* renderer, std::string fileName, int xpos, int ypos,
 	m_pbitmapSurface = SDL_LoadBMP(fileName.c_str());
 	if (!m_pbitmapSurface)
 	{
-		printf("Surface fpr bitmap '%' not loaded \n", fileName.c_str());
+		printf("Surface for bitmap '%' not loaded \n", fileName.c_str());
 		printf("%\n", SDL_GetError());
+		printf(fileName.c_str());
 
 	}
 	else
