@@ -1,5 +1,6 @@
 #include "Game.h"
 #include <SDL.h>
+#include "Bitmap.h"
 
 Game::Game()
 {
@@ -44,6 +45,11 @@ Game::Game()
 		return;
 	}
 
+	m_monster = new Bitmap(m_Renderer, "assets/monster.bmp", 100, 100);
+	m_monsterTrans	= new Bitmap(m_Renderer, "assets/monsterTrans.bmp", 200, 100);
+	m_monsterTransKeyed = new Bitmap(m_Renderer, "assets/monsterTrans.gmp", 300, 100, true);
+
+
 
 }
 
@@ -60,10 +66,30 @@ Game::~Game()
 	{
 		SDL_DestroyWindow(m_Window);
 	}
+
+	if (m_monsterTransKeyed)
+		delete m_monsterTransKeyed;
+	if (m_monsterTrans)
+		delete m_monsterTrans;
+	if (m_monster)
+		delete m_monster;
+}
+
+void Game::CheckEvents(void)
+{
 }
 
 void Game::Update(void)
 {
+	CheckEvents();
+	SDL_RenderClear(m_Renderer);
+
+	m_monster->Draw();
+	m_monsterTrans->Draw();
+	m_monsterTransKeyed->Draw();
+
+    SDL_RenderPresent(m_Renderer);
+	SDL_Delay(16);
 }
 
 void Game::SetDisplayColour(int r, int g, int b, int a)
