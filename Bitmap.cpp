@@ -20,6 +20,7 @@ Bitmap::Bitmap(SDL_Renderer* renderer, std::string fileName, int xpos, int ypos,
 	}
 	else
 	{
+		printf("loaded bmp");
 
 		if (useTransparency)
 		{
@@ -28,6 +29,7 @@ Bitmap::Bitmap(SDL_Renderer* renderer, std::string fileName, int xpos, int ypos,
 
 		}
 		m_pbitmapTexture = SDL_CreateTextureFromSurface(m_pRenderer, m_pbitmapSurface);
+
 		if (!m_pbitmapTexture)
 		{
 			printf("Texture for bitamp '%s' not loaded \n", fileName.c_str());
@@ -53,6 +55,8 @@ void Bitmap::Draw()
 {
 	if (m_pbitmapTexture)
 	{
+		printf("drawn");
+
 		SDL_Rect destRect = { m_x, m_y, m_pbitmapSurface->w, m_pbitmapSurface->h };
 		SDL_RenderCopy(m_pRenderer, m_pbitmapTexture, NULL, &destRect);
 	}

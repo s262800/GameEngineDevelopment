@@ -83,6 +83,7 @@ void Game::CheckEvents(void)
 
 void Game::Update(void)
 {
+	printf("update");
 	CheckEvents();
 	SDL_RenderClear(m_Renderer);
 

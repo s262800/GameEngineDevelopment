@@ -63,6 +63,7 @@ bool Input::KeyIsPressed(KEYS_PRESSED_LIST key)
 
 Input::Input()
 {
+
 }
 
 Input::~Input()
