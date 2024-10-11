@@ -7,8 +7,6 @@
 
 int main(int argc, char* argv[])
 {
-	SDL_Init(SDL_INIT_EVERYTHING);
-
 	Game* game = new Game();
 	Input* input = new Input();
 
@@ -24,7 +22,7 @@ int main(int argc, char* argv[])
 			{
 				if (++r > 255) r = 0;
 			}
-		
+
 			if (input->KeyIsPressed(KEY_G))
 			{
 				if (++g > 255) g = 0;
@@ -35,11 +33,12 @@ int main(int argc, char* argv[])
 			{
 				if (++b > 255) b = 0;
 			}
+			
+			game->SetDisplayColour(r, g, b, a);
+			game->Update();
+			
+
 		}
-	
-		game->SetDisplayColour(r,g,b, a);
-		game->ShowRender();
-		game->Update();
 
 
 		delete input;

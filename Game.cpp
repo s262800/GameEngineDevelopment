@@ -106,18 +106,19 @@ void Game::SetDisplayColour(int r, int g, int b, int a)
 			b,
 			a
 		);
+
+
+		//wipe the display to the colour we just set
+		SDL_RenderClear(m_Renderer);
+
+		//show what we've drawn
+		SDL_RenderPresent(m_Renderer);
+
+		//pause for 5 secs
+		SDL_Delay(5000);
 	}
+
 }
 
-void Game::ShowRender(void)
-{
-	//wipe the display to the colour we just set
-	SDL_RenderClear(m_Renderer);
 
-	//show what we've drawn
-	SDL_RenderPresent(m_Renderer);
-
-	//pause for 5 secs
-	SDL_Delay(5000);
-}
 

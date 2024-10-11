@@ -11,7 +11,6 @@ void Input::Update(void)
 
 			switch (keyPressed)
 			{
-
 			case SDLK_ESCAPE:
 				m_keysPressed[KEY_ESCAPE] = true;
 				break;

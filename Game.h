@@ -26,7 +26,6 @@ public:
 	void CheckEvents(void);
 	void Update(void);
 	void SetDisplayColour(int r, int g, int b, int a);
-	void ShowRender(void);
 
 
 };
