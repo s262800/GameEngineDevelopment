@@ -1,6 +1,5 @@
 #include "Bitmap.h"
-#include "SDL.h"
-#include "SDL_render.h"
+
 
 using namespace std;
 

@@ -6,16 +6,19 @@
 #include "SDL.h"
 #include "SDL_ttf.h"
 
+#include "Bitmap.h"
+
 using namespace std;
 
 class SDL_Window;
 class SDL_Renderer;
-class Bitmap;
+
 
 
 class Game
 {
 private:
+public :
 	SDL_Window* m_Window;
 	SDL_Renderer* m_Renderer;
 

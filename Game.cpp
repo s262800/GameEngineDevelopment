@@ -1,6 +1,7 @@
 #include "Game.h"
+
+
 #include <SDL.h>
-#include "Bitmap.h"
 
 Game::Game()
 {
@@ -9,12 +10,16 @@ Game::Game()
 
 	//start uo
 	SDL_Init(SDL_INIT_VIDEO);
+		
 	TTF_Init();
+	
+
+
 
 	//create the window
 	m_Window = SDL_CreateWindow(
 		"My Window", //title
-		250, //initial x pos
+		250, //initial x pos#include "SDL_ttf.h"
 		50, //initial y pos
 		640, //width, in pixelss
 		480, //height, in pixels
@@ -49,8 +54,8 @@ Game::Game()
 	}
 
 	m_monster = new Bitmap(m_Renderer, "assets/monster.bmp", 100, 100);
-	m_monsterTrans = new Bitmap(m_Renderer, "assets/monsterTrans.bmp", 200, 100);
-	m_monsterTransKeyed = new Bitmap(m_Renderer, "assets/monsterTrans.gmp", 300, 100, true);
+	//m_monsterTrans = new Bitmap(m_Renderer, "assets/monsterTrans.bmp", 200, 100);
+	//m_monsterTransKeyed = new Bitmap(m_Renderer, "assets/monsterTrans.gmp", 300, 100, true);
 
 	m_pSmallFont = TTF_OpenFont("assets/DejaVuSans.ttf", 15);
 	m_pBigFont = TTF_OpenFont("assets/DejaVuSans.ttf", 50);
@@ -96,6 +101,7 @@ void Game::Update(void)
 	m_monsterTrans->Draw();
 	m_monsterTransKeyed->Draw();
 
+	
 	UpdateText("Small Red", 50, 10, m_pSmallFont, { 255,0,0 });
 	UpdateText("Small Blue", 50, 40, m_pSmallFont, { 0,0,255 });
 
@@ -106,9 +112,10 @@ void Game::Update(void)
 	UpdateText(myString, 50, 70, m_pBigFont, { 0,255,0 });
 
 	int testNumber = 1234;
-	string testString = "Test Number:";
+	string testString = "Test Number: ";
 	testString += to_string(testNumber);
 	UpdateText(testString, 50, 210, m_pBigFont, { 255,255,255 });
+	
 
     SDL_RenderPresent(m_Renderer);
 	SDL_Delay(16);
@@ -148,11 +155,10 @@ void Game::UpdateText(string msg, int x, int y, TTF_Font* font, SDL_Color colour
 	}
 
 	if (texture)
-		SDL_DestroyTexture;
+		SDL_DestroyTexture(texture);
 
 	if (surface)
 		SDL_FreeSurface(surface);
-
 
 
 

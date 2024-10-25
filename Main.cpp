@@ -1,6 +1,7 @@
 #include <SDL.h>
 #include "Game.h"
 #include "Input.h"
+#include "Bitmap.h"
 
 #undef main
 

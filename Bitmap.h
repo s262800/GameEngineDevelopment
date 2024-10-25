@@ -1,10 +1,11 @@
 #pragma once
 
 #include <string>
-
-class SDL_Surface;
-class SDL_Texture;
-class SDL_Renderer;
+#include "SDL.h"
+#include "SDL_render.h"
+//class SDL_Surface;
+//class SDL_Texture;
+//class SDL_Renderer;
 
 class Bitmap
 {
