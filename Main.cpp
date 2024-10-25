@@ -15,7 +15,7 @@ int main(int argc, char* argv[])
 	{
 		Uint8 r = 127, g = 127, b = 127, a = 255;
 
-		while (!input->KeyIsPressed(KEY_ESCAPE))
+		while (input->KeyIsPressed(KEY_ESCAPE))
 		{
 			input->Update();
 

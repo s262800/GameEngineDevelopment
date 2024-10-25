@@ -54,8 +54,8 @@ Game::Game()
 	}
 
 	m_monster = new Bitmap(m_Renderer, "assets/monster.bmp", 100, 100);
-	//m_monsterTrans = new Bitmap(m_Renderer, "assets/monsterTrans.bmp", 200, 100);
-	//m_monsterTransKeyed = new Bitmap(m_Renderer, "assets/monsterTrans.gmp", 300, 100, true);
+	m_monsterTrans = new Bitmap(m_Renderer, "assets/monsterTrans.bmp", 200, 100);
+	m_monsterTransKeyed = new Bitmap(m_Renderer, "assets/monsterTrans.gmp", 300, 100, true);
 
 	m_pSmallFont = TTF_OpenFont("assets/DejaVuSans.ttf", 15);
 	m_pBigFont = TTF_OpenFont("assets/DejaVuSans.ttf", 50);
@@ -180,11 +180,6 @@ void Game::SetDisplayColour(int r, int g, int b, int a)
 		//wipe the display to the colour we just set
 		SDL_RenderClear(m_Renderer);
 
-		//show what we've drawn
-		SDL_RenderPresent(m_Renderer);
-
-		//pause for 5 secs
-		SDL_Delay(5000);
 	}
 
 }

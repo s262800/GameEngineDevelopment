@@ -54,9 +54,9 @@ void Bitmap::Draw()
 {
 	if (m_pbitmapTexture)
 	{
-		printf("drawn");
 
 		SDL_Rect destRect = { m_x, m_y, m_pbitmapSurface->w, m_pbitmapSurface->h };
+
 		SDL_RenderCopy(m_pRenderer, m_pbitmapTexture, NULL, &destRect);
 	}
 }
