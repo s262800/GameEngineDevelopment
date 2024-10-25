@@ -168,13 +168,15 @@ void Game::SetDisplayColour(int r, int g, int b, int a)
 {
 	if (m_Renderer)
 	{
-		int result = SDL_SetRenderDrawColor(
+		int result = SDL_SetRenderDrawColor
+		(
 			m_Renderer,
 			r,
 			g,
 			b,
 			a
 		);
+
 
 
 		//wipe the display to the colour we just set
