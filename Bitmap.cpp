@@ -1,6 +1,7 @@
 #include "Bitmap.h"
 
 #include "TextureManager.h"
+#include <iostream>
 using namespace std;
 
 
@@ -60,12 +61,15 @@ Bitmap::~Bitmap()
 		SDL_FreeSurface;
 }
 
-void Bitmap::Draw(int xRes, int yRes)
+void Bitmap::Draw(SDL_Renderer* renderer, int xScale, int yScale)
 {
 	if (m_pbitmapTexture)
 	{
-		SDL_Rect destRect = { m_x, m_y, xRes,yRes };
+		SDL_Rect destRect = { m_x, m_y, (xScale * defaultRes) ,(yScale * defaultRes)};
 
 		SDL_RenderCopy(m_pRenderer, m_pbitmapTexture, NULL, &destRect);
 	}
+
+	else
+		cerr << "Drawing Error";
 }

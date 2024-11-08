@@ -1,5 +1,5 @@
 #include "Game.h"
-
+#include "DynamicGameObject.h"
 
 #include <SDL.h>
 
@@ -58,6 +58,9 @@ Game::Game()
 	
 	m_monster = new Bitmap(m_Renderer, "assets/robot.bmp", 100, 100);
 
+	player = new DynamicGameObject(m_monster, 4, 4);
+
+
 
 	m_pSmallFont = TTF_OpenFont("assets/DejaVuSans.ttf", 15);
 	m_pBigFont = TTF_OpenFont("assets/DejaVuSans.ttf", 50);
@@ -101,9 +104,10 @@ void Game::Update(void)
 	CheckEvents();
 	SDL_RenderClear(m_Renderer);
 
-	m_monster->Draw(128, 128);
+	//m_monster->Draw(m_Renderer, 128, 128);
 	//m_monsterTrans->Draw();
 	//m_monsterTransKeyed->Draw();
+	player->DrawObject(m_Renderer);
 
 	
 	UpdateText("Small Red", 50, 10, m_pSmallFont, { 255,0,0 });

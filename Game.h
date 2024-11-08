@@ -5,8 +5,8 @@
 
 #include "SDL.h"
 #include "SDL_ttf.h"
-
 #include "Bitmap.h"
+#include "DynamicGameObject.h"
 
 using namespace std;
 
@@ -18,7 +18,9 @@ class SDL_Renderer;
 class Game
 {
 private:
+
 public :
+
 	SDL_Window* m_Window;
 	SDL_Renderer* m_Renderer;
 
@@ -26,10 +28,13 @@ public :
 	Bitmap* m_monsterTrans;
 	Bitmap* m_monsterTransKeyed;
 
+	DynamicGameObject* player;
+
 	TTF_Font* m_pSmallFont;
 	TTF_Font* m_pBigFont;
 
-public:
+
+
 	Game();
 	~Game();
 

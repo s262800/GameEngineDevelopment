@@ -17,11 +17,13 @@ private:
 
 	int m_x, m_y;
 
+	int defaultRes = 32;
+
 public:
 	Bitmap(SDL_Renderer* renderer, std::string fileName, int xpos, int ypos, bool useTransparency = false);
     ~Bitmap();
 
-	void Draw(int xRes, int yRes);
+	void Draw(SDL_Renderer* renderer, int xScale, int yScale);
 
 
 
