@@ -23,6 +23,13 @@ void Input::Update(void)
 			case SDLK_b:
 				m_keysPressed[KEY_B] = true;
 				break;
+			case SDLK_w:
+				m_keysPressed[KEY_W] = true;
+				break;
+			case SDLK_a:
+				m_keysPressed[KEY_A] = true;
+				break;
+
 
 			}
 

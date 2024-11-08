@@ -34,6 +34,11 @@ int main(int argc, char* argv[])
 			{
 				//if (++b > 255) b = 0;
 			}
+
+			if (input->KeyIsPressed(KEY_A))
+			{
+				
+			}
 			
 			game->SetDisplayColour(r, g, b, a);
 			game->Update();
