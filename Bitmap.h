@@ -21,7 +21,7 @@ public:
 	Bitmap(SDL_Renderer* renderer, std::string fileName, int xpos, int ypos, bool useTransparency = false);
     ~Bitmap();
 
-	void Draw();
+	void Draw(int xRes, int yRes);
 
 
 

@@ -1,15 +1,18 @@
 #include "Bitmap.h"
 
-
+#include "TextureManager.h"
 using namespace std;
+
 
 
 
 Bitmap::Bitmap(SDL_Renderer* renderer, std::string fileName, int xpos, int ypos, bool useTransparency)
 {
+	
 	m_pRenderer = renderer;
-
-	m_pbitmapSurface = SDL_LoadBMP(fileName.c_str());
+	
+	//m_pbitmapSurface = SDL_LoadBMP(fileName.c_str());
+	/*
 	if (!m_pbitmapSurface)
 	{
 		printf("Surface for bitmap '%' not loaded \n", fileName.c_str());
@@ -18,7 +21,7 @@ Bitmap::Bitmap(SDL_Renderer* renderer, std::string fileName, int xpos, int ypos,
 
 	}
 	else
-	{
+	{-
 		printf("loaded bmp");
 
 		if (useTransparency)
@@ -27,14 +30,21 @@ Bitmap::Bitmap(SDL_Renderer* renderer, std::string fileName, int xpos, int ypos,
 			SDL_SetColorKey(m_pbitmapSurface, SDL_TRUE, colourKey);
 
 		}
-		m_pbitmapTexture = SDL_CreateTextureFromSurface(m_pRenderer, m_pbitmapSurface);
+		*/
 
-		if (!m_pbitmapTexture)
-		{
-			printf("Texture for bitamp '%s' not loaded \n", fileName.c_str());
-			printf(" % s\n", SDL_GetError());
-		}
+	TextureManager* textureManager = new TextureManager();
+
+	m_pbitmapTexture = textureManager->Load(fileName, useTransparency, m_pRenderer);
+	m_pbitmapSurface = textureManager->m_surface;
+
+	//SDL_CreateTextureFromSurface(m_pRenderer, m_pbitmapSurface);
+
+	if (!m_pbitmapTexture)
+	{
+		printf("Texture for bitamp '%s' not loaded \n", fileName.c_str());
+		printf(" % s\n", SDL_GetError());
 	}
+	
 
 	m_x = xpos;
 	m_y = ypos;
@@ -50,12 +60,11 @@ Bitmap::~Bitmap()
 		SDL_FreeSurface;
 }
 
-void Bitmap::Draw()
+void Bitmap::Draw(int xRes, int yRes)
 {
 	if (m_pbitmapTexture)
 	{
-
-		SDL_Rect destRect = { m_x, m_y, m_pbitmapSurface->w, m_pbitmapSurface->h };
+		SDL_Rect destRect = { m_x, m_y, xRes,yRes };
 
 		SDL_RenderCopy(m_pRenderer, m_pbitmapTexture, NULL, &destRect);
 	}

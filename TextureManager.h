@@ -12,5 +12,8 @@ public:
 
 	SDL_Texture* Load(const std::string fileName, bool useTransparancy, SDL_Renderer* PRenderer);
 	void Unload(const std::string fileName);
+
+	SDL_Surface* m_surface;
+
 };
 

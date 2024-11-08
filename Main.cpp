@@ -21,18 +21,18 @@ int main(int argc, char* argv[])
 
 			if (input->KeyIsPressed(KEY_R))
 			{
-				if (++r > 255) r = 0;
+				//if (++r > 255) r = 0;
 			}
 
 			if (input->KeyIsPressed(KEY_G))
 			{
-				if (++g > 255) g = 0;
+				//if (++g > 255) g = 0;
 			}
 
 
 			if (input->KeyIsPressed(KEY_B))
 			{
-				if (++b > 255) b = 0;
+				//if (++b > 255) b = 0;
 			}
 			
 			game->SetDisplayColour(r, g, b, a);
