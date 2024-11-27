@@ -2,9 +2,7 @@
 #include "Game.h"
 #include "Input.h"
 #include "Bitmap.h"
-
-
-
+#include "EventSystem.h"
 
 
 int main(int argc, char* argv[])
@@ -37,6 +35,11 @@ int main(int argc, char* argv[])
 			}
 
 			if (input->KeyIsPressed(KEY_A))
+			{
+				
+			}
+
+			if (input->KeyIsPressed(KEY_D))
 			{
 				
 			}

@@ -60,8 +60,6 @@ Game::Game()
 
 	player = new DynamicGameObject(m_monster, 4, 4);
 
-
-
 	m_pSmallFont = TTF_OpenFont("assets/DejaVuSans.ttf", 15);
 	m_pBigFont = TTF_OpenFont("assets/DejaVuSans.ttf", 50);
 	
@@ -95,9 +93,7 @@ Game::~Game()
 		delete m_monster;
 }
 
-void Game::CheckEvents(void)
-{
-}
+
 
 void Game::Update(void)
 {
@@ -109,6 +105,7 @@ void Game::Update(void)
 	//m_monsterTransKeyed->Draw();
 	player->DrawObject(m_Renderer);
 
+	
 	
 	UpdateText("Small Red", 50, 10, m_pSmallFont, { 255,0,0 });
 	UpdateText("Small Blue", 50, 40, m_pSmallFont, { 0,0,255 });
