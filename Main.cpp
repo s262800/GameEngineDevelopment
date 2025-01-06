@@ -3,6 +3,10 @@
 #include "Input.h"
 #include "Bitmap.h"
 #include "EventSystem.h"
+#include "imgui.h"
+#include "backends/imgui_impl_sdl.h"
+#include "imgui_sdl.h"
+#include "imgui_internal.h"
 
 
 int main(int argc, char* argv[])
@@ -10,13 +14,31 @@ int main(int argc, char* argv[])
 	Game* game = new Game();
 	Input* input = new Input();
 
+	//imGUI Setup
+	IMGUI_CHECKVERSION();
+	ImGui::CreateContext();
+	SDL_DisplayMode DisplayMode;
+	SDL_GetCurrentDisplayMode(0, &DisplayMode);
+	ImGuiSDL::Initialize(game->m_Renderer, DisplayMode.w, DisplayMode.h);
+
+	ImGuiIO& io = ImGui::GetIO();
+	(void)io;
+	io.ConfigFlags |= ImGuiConfigFlags_NavEnableKeyboard;
+	//io.ConfigFlags |= ImGuiConfigFlags_DockingEnable;
+	//io.ConfigFlags |= ImGuiConfigFlags_ViewportsEnable;
+	ImGui::StyleColorsDark();
+
+	ImGui_ImplSDL2_InitForOpenGL(game->m_Window, SDL_GL_GetCurrentContext());
+
+
 	if (game && input)
 	{
 		Uint8 r = 127, g = 127, b = 127, a = 255;
 
 		while (input->KeyIsPressed(KEY_ESCAPE))
 		{
-			input->Update();
+	
+			input->Update();	
 
 			if (input->KeyIsPressed(KEY_R))
 			{
@@ -58,6 +80,13 @@ int main(int argc, char* argv[])
 		delete game;
 		game = nullptr;
 	}
+
+	
+	
+
+
+
+
 
 	return 0;
 

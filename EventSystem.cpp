@@ -5,7 +5,7 @@
 
 void EventSystem::CallEvent(EVENTS eventToCall)
 {
-
+	/*
 	switch (eventToCall)
 	{
 	case PLAYER_MOVED:
@@ -13,6 +13,7 @@ void EventSystem::CallEvent(EVENTS eventToCall)
 
 
 	}
+	*/
 
 }
 

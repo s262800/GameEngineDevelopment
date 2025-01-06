@@ -3,6 +3,11 @@
 
 #include <SDL.h>
 
+#include "imgui.h"
+#include "backends/imgui_impl_sdl.h"
+#include "imgui_sdl.h"
+#include "imgui_internal.h"
+
 Game::Game()
 {
 	m_Window = nullptr;
@@ -52,6 +57,17 @@ Game::Game()
 	}
 
 	
+
+
+
+
+
+
+
+
+
+
+
 //	m_monster = new Bitmap(m_Renderer, "assets/monster.bmp", 100, 100);
 	//m_monsterTrans = new Bitmap(m_Renderer, "assets/monsterTrans.bmp", 200, 100);
 	//m_monsterTransKeyed = new Bitmap(m_Renderer, "assets/monsterTrans.gmp", 300, 100, true);
@@ -122,8 +138,21 @@ void Game::Update(void)
 	UpdateText(testString, 50, 210, m_pBigFont, { 255,255,255 });
 	
 
+	ImGui::NewFrame();
+	ImGui_ImplSDL2_NewFrame(m_Window);
+	bool show = true;
+
+	ImGui::ShowDemoWindow(nullptr);
+
+	ImGui::Render();
+	ImGuiSDL::Render(ImGui::GetDrawData());
+
     SDL_RenderPresent(m_Renderer);
 	SDL_Delay(16);
+}
+
+void Game::CheckEvents(void)
+{
 }
 
 void Game::UpdateText(string msg, int x, int y, TTF_Font* font, SDL_Color colour)
