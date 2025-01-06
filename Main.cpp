@@ -7,6 +7,7 @@
 #include "backends/imgui_impl_sdl.h"
 #include "imgui_sdl.h"
 #include "imgui_internal.h"
+#include "AssetEditor.h"
 
 
 int main(int argc, char* argv[])
@@ -29,6 +30,8 @@ int main(int argc, char* argv[])
 	ImGui::StyleColorsDark();
 
 	ImGui_ImplSDL2_InitForOpenGL(game->m_Window, SDL_GL_GetCurrentContext());
+
+	AssetEditor(game->m_Renderer);
 
 
 	if (game && input)

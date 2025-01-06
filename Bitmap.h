@@ -13,6 +13,7 @@ private:
 
 	SDL_Surface* m_pbitmapSurface;
 	SDL_Texture* m_pbitmapTexture;
+
 	SDL_Renderer* m_pRenderer;
 
 	int m_x, m_y;
@@ -23,7 +24,9 @@ public:
 	Bitmap(SDL_Renderer* renderer, std::string fileName, int xpos, int ypos, bool useTransparency = false);
     ~Bitmap();
 
+
 	void Draw(SDL_Renderer* renderer, int xScale, int yScale);
+	int GetTextureRef();
 
 
 

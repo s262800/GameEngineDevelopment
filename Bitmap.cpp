@@ -73,3 +73,8 @@ void Bitmap::Draw(SDL_Renderer* renderer, int xScale, int yScale)
 	else
 		cerr << "Drawing Error";
 }
+
+int Bitmap::GetTextureRef()
+{
+	return 0;
+}
