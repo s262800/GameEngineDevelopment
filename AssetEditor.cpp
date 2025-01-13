@@ -9,10 +9,12 @@
 #include <iostream>
 #include "AssetEditor.h"
 
-AssetEditor :: AssetEditor(SDL_Renderer* renderer)
+AssetEditor::AssetEditor(SDL_Renderer* renderer, SDL_Window* window)
 {
-	std::vector<Bitmap*> content;
-	std::string path = "../assets";
+	p_Renderer = renderer;
+
+	
+	std::string path = "./assets";
 	for (const auto& entry : std::filesystem::directory_iterator(path)) //directory_iterator(path) //recursive_
 	{
 		if (entry.path().extension() == ".bmp" || entry.path().extension() == ".jpg" || entry.path().extension() == ".png")
@@ -28,13 +30,30 @@ AssetEditor :: AssetEditor(SDL_Renderer* renderer)
 		//debug
 		std::cout << entry.path() << std::endl;
 	}
+}
+void AssetEditor::Update()
+{
 
+	/////////////////////////////////For Draging
+	if (ImGui::IsMouseReleased(ImGuiMouseButton_Left) && AssetMouseDrag != nullptr)
+	{
+		cout << "Test" << endl;
+		int x, y;
+		SDL_GetMouseState(&x, &y);
+		Bitmap* bmp = new Bitmap(p_Renderer, AssetMouseDrag->FileName, x, y, true);
+		//s->Transfrom.ParentSet(GameWindow::Instance().GetHirarcy());
+		//sceneRoot.Children.push_back(&s->M_Transform);
 
+		AssetMouseDrag = nullptr;
+	}
+
+	
 
 	ImGui::Begin("Editor");
 	ImGui::BeginChild("Content Window", ImVec2(), true);
+
 	//ImGui::BeginTable("Content browser", 3);
-	;
+	
 	for (int i = 0; i < content.size(); i++)
 	{
 		ImGui::PushID(i);
@@ -42,13 +61,14 @@ AssetEditor :: AssetEditor(SDL_Renderer* renderer)
 		ImGui::ImageButton((ImTextureID)content[i]->GetTextureRef(), { 100,100 });
 
 
-		//for dragging
-		/*if (ImGui::BeginDragDropSource())
+		/////////////////////////////////For Draging
+		if (ImGui::BeginDragDropSource())
 		{
-			AssetMousDrag = content[i];
+			AssetMouseDrag = content[i];
 			ImGui::Image((ImTextureID)content[i]->GetTextureRef(), { 100,100 });
 			ImGui::EndDragDropSource();
-		}*/
+		}
+		/////////////////////////////////For Draging
 		ImGui::PopID();
 		ImGui::SameLine();
 	}
@@ -57,6 +77,11 @@ AssetEditor :: AssetEditor(SDL_Renderer* renderer)
 
 	ImGui::EndChild();
 	ImGui::End();
+
+	
+
+
+
 }
 
 

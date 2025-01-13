@@ -26,8 +26,8 @@ public:
 
 
 	void Draw(SDL_Renderer* renderer, int xScale, int yScale);
-	int GetTextureRef();
+	SDL_Texture* GetTextureRef();
 
-
+	std::string FileName = "";
 
 };

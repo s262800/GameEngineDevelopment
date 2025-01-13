@@ -15,6 +15,7 @@ int main(int argc, char* argv[])
 	Game* game = new Game();
 	Input* input = new Input();
 
+
 	//imGUI Setup
 	IMGUI_CHECKVERSION();
 	ImGui::CreateContext();
@@ -31,9 +32,11 @@ int main(int argc, char* argv[])
 
 	ImGui_ImplSDL2_InitForOpenGL(game->m_Window, SDL_GL_GetCurrentContext());
 
-	AssetEditor(game->m_Renderer);
 
+	AssetEditor(game->m_Renderer, game->m_Window);
+	//AssetEditor* assetEditor = new AssetEditor(game->m_Renderer, game->m_Window);
 
+	
 	if (game && input)
 	{
 		Uint8 r = 127, g = 127, b = 127, a = 255;

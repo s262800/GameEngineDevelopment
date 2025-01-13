@@ -12,13 +12,14 @@ using namespace std;
 
 class SDL_Window;
 class SDL_Renderer;
+class AssetEditor;
 
 
 
 class Game
 {
 private:
-
+	AssetEditor* assetEditor;
 public :
 
 	SDL_Window* m_Window;

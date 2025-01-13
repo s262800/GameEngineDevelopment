@@ -7,6 +7,7 @@
 #include "backends/imgui_impl_sdl.h"
 #include "imgui_sdl.h"
 #include "imgui_internal.h"
+#include "AssetEditor.h"
 
 Game::Game()
 {
@@ -58,9 +59,7 @@ Game::Game()
 
 	
 
-
-
-
+	assetEditor = new AssetEditor(m_Renderer, m_Window);
 
 
 
@@ -116,13 +115,25 @@ void Game::Update(void)
 	CheckEvents();
 	SDL_RenderClear(m_Renderer);
 
+
+
 	//m_monster->Draw(m_Renderer, 128, 128);
 	//m_monsterTrans->Draw();
 	//m_monsterTransKeyed->Draw();
 	player->DrawObject(m_Renderer);
 
+
+	//GUI
+	ImGui::NewFrame();
+	ImGui_ImplSDL2_NewFrame(m_Window);
+
 	
-	
+	assetEditor->Update();
+
+	ImGui::Render();
+	ImGuiSDL::Render(ImGui::GetDrawData());
+	//END GUI
+
 	UpdateText("Small Red", 50, 10, m_pSmallFont, { 255,0,0 });
 	UpdateText("Small Blue", 50, 40, m_pSmallFont, { 0,0,255 });
 
@@ -136,16 +147,7 @@ void Game::Update(void)
 	string testString = "Test Number: ";
 	testString += to_string(testNumber);
 	UpdateText(testString, 50, 210, m_pBigFont, { 255,255,255 });
-	
 
-	ImGui::NewFrame();
-	ImGui_ImplSDL2_NewFrame(m_Window);
-	bool show = true;
-
-	ImGui::ShowDemoWindow(nullptr);
-
-	ImGui::Render();
-	ImGuiSDL::Render(ImGui::GetDrawData());
 
     SDL_RenderPresent(m_Renderer);
 	SDL_Delay(16);

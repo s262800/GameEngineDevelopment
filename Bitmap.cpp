@@ -11,6 +11,8 @@ Bitmap::Bitmap(SDL_Renderer* renderer, std::string fileName, int xpos, int ypos,
 {
 	
 	m_pRenderer = renderer;
+
+	FileName = fileName;
 	
 	//m_pbitmapSurface = SDL_LoadBMP(fileName.c_str());
 	/*
@@ -74,7 +76,7 @@ void Bitmap::Draw(SDL_Renderer* renderer, int xScale, int yScale)
 		cerr << "Drawing Error";
 }
 
-int Bitmap::GetTextureRef()
+SDL_Texture* Bitmap::GetTextureRef()
 {
-	return 0;
+	return m_pbitmapTexture;
 }
