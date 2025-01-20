@@ -38,6 +38,7 @@ int main(int argc, char* argv[])
 
 	
 	if (game && input)
+
 	{
 		Uint8 r = 127, g = 127, b = 127, a = 255;
 

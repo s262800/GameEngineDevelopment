@@ -2,15 +2,13 @@
 #include "Bitmap.h"
 #pragma once
 
-class DynamicGameObject
+class DynamicGameObject : public Bitmap
 {
 public:
-	DynamicGameObject(Bitmap* bitmap, int xScale, int yScale);
+	DynamicGameObject(SDL_Renderer* renderer, std::string fileName, int xpos, int ypos, bool useTransparency);
 	~DynamicGameObject();
 
-	void DrawObject(SDL_Renderer* renderer);
-	
-	Bitmap* obj_bitmap;
+	//void DrawObject(SDL_Renderer* renderer);
 
 private:
 

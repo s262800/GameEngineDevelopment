@@ -2,12 +2,11 @@
 
 
 
-DynamicGameObject::DynamicGameObject(Bitmap* bitmap, int scaleX, int scaleY)
+DynamicGameObject::DynamicGameObject(SDL_Renderer* renderer, std::string fileName, int xpos, int ypos, bool useTransparency) 
+	:Bitmap(renderer, fileName, xpos, ypos, useTransparency)
 {
-	obj_bitmap = bitmap;
 	obj_transform = new Transform();
-	xScale = scaleX;
-	yScale = scaleY;
+
 
 }
 
@@ -16,9 +15,9 @@ DynamicGameObject::~DynamicGameObject()
 
 }
 
-void DynamicGameObject::DrawObject(SDL_Renderer* renderer)
-{
-	obj_bitmap->Draw(renderer, xScale, yScale);
-}
+//void DynamicGameObject::DrawObject(SDL_Renderer* renderer)
+//{
+//	obj_bitmap->Draw(renderer, xScale, yScale);
+//}
 
 
