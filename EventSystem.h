@@ -1,8 +1,4 @@
-#define GLM_ENABLE_EXPERIMENTAL
-
 #include <SDL.h>
-#include <glm.hpp>
-#include <gtx\transform.hpp>
 #include "DynamicGameObject.h"
 
 enum EVENTS

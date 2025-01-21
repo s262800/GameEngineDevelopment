@@ -21,7 +21,7 @@ void EventSystem::CheckEvents()
 {
 }
 
-void PlayerMoved(glm::vec2 x, glm::vec2 y)
+void PlayerMoved()
 {
 	
 
