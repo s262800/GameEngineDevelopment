@@ -13,27 +13,6 @@ Bitmap::Bitmap(SDL_Renderer* renderer, std::string fileName, int xpos, int ypos,
 	m_pRenderer = renderer;
 
 	FileName = fileName;
-	
-	//m_pbitmapSurface = SDL_LoadBMP(fileName.c_str());
-	/*
-	if (!m_pbitmapSurface)
-	{
-		printf("Surface for bitmap '%' not loaded \n", fileName.c_str());
-		printf("%\n", SDL_GetError());
-		printf(fileName.c_str());
-
-	}
-	else
-	{-
-		printf("loaded bmp");
-
-		if (useTransparency)
-		{
-			Uint32 colourKey = SDL_MapRGB(m_pbitmapSurface->format, 255, 0, 255);
-			SDL_SetColorKey(m_pbitmapSurface, SDL_TRUE, colourKey);
-
-		}
-		*/
 
 	TextureManager* textureManager = new TextureManager();
 

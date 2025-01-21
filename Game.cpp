@@ -8,11 +8,13 @@
 #include "imgui_sdl.h"
 #include "imgui_internal.h"
 #include "AssetEditor.h"
+#include "Scene.h"
 
 Game::Game()
 {
 	m_Window = nullptr;
 	m_Renderer = nullptr;
+	Scene* scene = nullptr;
 
 	//start uo
 	SDL_Init(SDL_INIT_VIDEO);
@@ -62,23 +64,21 @@ Game::Game()
 	assetEditor = new AssetEditor(m_Renderer, m_Window);
 
 
-
-
-
-
-
 //	m_monster = new Bitmap(m_Renderer, "assets/monster.bmp", 100, 100);
 	//m_monsterTrans = new Bitmap(m_Renderer, "assets/monsterTrans.bmp", 200, 100);
 	//m_monsterTransKeyed = new Bitmap(m_Renderer, "assets/monsterTrans.gmp", 300, 100, true);
 	
-	m_monster = new Bitmap(m_Renderer, "assets/robot.bmp", 100, 100);
+//	m_monster = new Bitmap(m_Renderer, "assets/robot.bmp", 100, 100);
 
 	//player = new DynamicGameObject(m_monster, 4, 4);
 
 	m_pSmallFont = TTF_OpenFont("assets/DejaVuSans.ttf", 15);
 	m_pBigFont = TTF_OpenFont("assets/DejaVuSans.ttf", 50);
-	
 
+	
+	scene->CreateDynamicGameObject(m_Renderer, "assets/robot.bmp", 100, 100, true);
+	
+	
 
 }
 
@@ -99,13 +99,6 @@ Game::~Game()
 	{
 		SDL_DestroyWindow(m_Window);
 	}
-
-	if (m_monsterTransKeyed)
-		delete m_monsterTransKeyed;
-	if (m_monsterTrans)
-		delete m_monsterTrans;
-	if (m_monster)
-		delete m_monster;
 }
 
 

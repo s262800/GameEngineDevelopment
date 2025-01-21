@@ -25,10 +25,6 @@ public :
 	SDL_Window* m_Window;
 	SDL_Renderer* m_Renderer;
 
-	Bitmap* m_monster;
-	Bitmap* m_monsterTrans;
-	Bitmap* m_monsterTransKeyed;
-
 	DynamicGameObject* player;
 
 	TTF_Font* m_pSmallFont;
