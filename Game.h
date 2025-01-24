@@ -7,6 +7,7 @@
 #include "SDL_ttf.h"
 #include "Bitmap.h"
 #include "DynamicGameObject.h"
+#include "Scene.h"
 
 using namespace std;
 
@@ -25,7 +26,10 @@ public :
 	SDL_Window* m_Window;
 	SDL_Renderer* m_Renderer;
 
-	DynamicGameObject* player;
+	Scene* scene;
+
+
+	//DynamicGameObject* player;
 
 	TTF_Font* m_pSmallFont;
 	TTF_Font* m_pBigFont;

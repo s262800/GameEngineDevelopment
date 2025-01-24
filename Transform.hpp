@@ -1,27 +1,66 @@
+#pragma once
 #include <vector>
-
-
 
 class Transform
 {
 
 private:
 	
-	int posX, posY;
-	int scaleX, scaleY;
-	int rotX, rotY;
+	float posX, posY;
+	float scaleX, scaleY;
+	float rotX, rotY;
 
 public:
 	
-	Transform()
+	Transform(float pX, float pY, float sX = 1, float sY = 1, float rX = 0, float rY = 0)
 	{
-
+		SetPosition(pX, pY);
+		SetScale(sX, sY);
+		SetRotation(rX, rY);
 	}
+
 	~Transform()
-	{}
+	{
+	}
 
+	void SetPosition(float x, float y)
+	{
+		posX = x;
+		posY = y;
+	}
+
+	void SetScale(float x, float y)
+	{
+		scaleX = x;
+		scaleY = y;
+	}
+
+	void SetRotation(float x, float y)
+	{
+		rotX = x;
+		rotY = y;
+	}
 	
+	void UpdatePosX(float xDelta) 
+	{ 
+		posX += xDelta;
+	}
 
+	void UpdatePosY(float yDelta) 
+	{
+		posY += yDelta;
+	}
+
+	float GetX() const 
+	{ 
+		return posX; 
+	}
+
+
+	float GetY() const 
+	{ 
+		return posY; 
+	}
 
 };
 

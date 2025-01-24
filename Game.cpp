@@ -8,13 +8,12 @@
 #include "imgui_sdl.h"
 #include "imgui_internal.h"
 #include "AssetEditor.h"
-#include "Scene.h"
 
 Game::Game()
 {
 	m_Window = nullptr;
 	m_Renderer = nullptr;
-	Scene* scene = nullptr;
+	scene = new Scene();
 
 	//start uo
 	SDL_Init(SDL_INIT_VIDEO);
@@ -76,9 +75,18 @@ Game::Game()
 	m_pBigFont = TTF_OpenFont("assets/DejaVuSans.ttf", 50);
 
 	
-	scene->CreateDynamicGameObject(m_Renderer, "assets/robot.bmp", 100, 100, true);
-	
-	
+	DynamicGameObject* d = scene->CreateDynamicGameObject(m_Renderer, "assets/robot.bmp", 100, 100, true);
+	StaticGameObject* s = scene->CreateStaticGameObject(m_Renderer, "assets/robot.bmp", 200, 100, true);
+
+	std::vector<StaticGameObject*> sgos;
+	std::vector<Bitmap*> bmps;
+	std::vector<DynamicGameObject*> dgos;
+	dgos.push_back(d);
+	sgos.push_back(s);
+
+
+	scene->InitialiseObjectLists(bmps, sgos, dgos);
+	scene->DrawAll();
 
 }
 
@@ -107,7 +115,8 @@ void Game::Update(void)
 {
 	CheckEvents();
 	SDL_RenderClear(m_Renderer);
-
+	scene->DrawAll();
+	scene->UpdateAll();
 
 
 	//m_monster->Draw(m_Renderer, 128, 128);
@@ -126,6 +135,9 @@ void Game::Update(void)
 	ImGui::Render();
 	ImGuiSDL::Render(ImGui::GetDrawData());
 	//END GUI
+
+
+	//move this ->
 
 	UpdateText("Small Red", 50, 10, m_pSmallFont, { 255,0,0 });
 	UpdateText("Small Blue", 50, 40, m_pSmallFont, { 0,0,255 });
@@ -149,6 +161,8 @@ void Game::Update(void)
 void Game::CheckEvents(void)
 {
 }
+
+//move to seperate class ->
 
 void Game::UpdateText(string msg, int x, int y, TTF_Font* font, SDL_Color colour)
 {
