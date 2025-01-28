@@ -1,5 +1,4 @@
 #pragma once
-#include "Transform.hpp"
 #include "Bitmap.h"
 
 
@@ -18,7 +17,7 @@ protected:
 
 private:
 
-	Transform* obj_transform;
+
 	Bitmap* bitmap;
 
 

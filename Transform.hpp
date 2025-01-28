@@ -8,7 +8,7 @@ private:
 	
 	float posX, posY;
 	float scaleX, scaleY;
-	float rotX, rotY;
+	float rotX = 0, rotY = 0;
 
 public:
 	
@@ -53,14 +53,26 @@ public:
 		posY += yDelta;
 	}
 
-	float GetX() const 
+
+
+	float GetXPos() const 
 	{ 
 		return posX; 
 	}
 
-	float GetY() const 
+	float GetYPos() const 
 	{ 
 		return posY; 
+	}
+
+	float GetXScale() const
+	{
+		return scaleX;
+	}
+
+	float GetYScale() const
+	{
+		return scaleY;
 	}
 
 };

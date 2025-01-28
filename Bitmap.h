@@ -4,6 +4,7 @@
 #include "SDL.h"
 #include "SDL_render.h"
 #include "Logger.h"
+#include "Transform.hpp"
 
 
 class Bitmap
@@ -19,6 +20,8 @@ public:
 	SDL_Texture* GetTextureRef();
 
 	std::string FileName = "";
+
+	Transform* obj_transform;
 
 protected:
 	

@@ -8,6 +8,7 @@ using namespace std;
 Bitmap::Bitmap(SDL_Renderer* renderer, std::string fileName, int xpos, int ypos, bool useTransparency)
 {
 	logger = new Logger();
+	obj_transform = new Transform(xpos, ypos);
 	//Store renderer and file name variables
 	m_pRenderer = renderer;
 	FileName = fileName;
@@ -46,9 +47,12 @@ void Bitmap::Draw()
 {
 	if (m_pbitmapTexture)
 	{
-		//SDL_Rect destRect = { m_x, m_y, (xScale * defaultRes) ,(yScale * defaultRes)}; old way to set scale
+		m_w = obj_transform->GetXScale();
+		m_h = obj_transform->GetYScale();
+		
+		SDL_Rect destRect = { m_x, m_y, (obj_transform->GetXScale() * defaultRes) ,(obj_transform->GetYScale() * defaultRes)};
 
-		SDL_Rect destRect = { m_x, m_y, defaultRes , defaultRes };
+		//SDL_Rect destRect = { m_x, m_y, defaultRes , defaultRes };
 
 		SDL_RenderCopy(m_pRenderer, m_pbitmapTexture, NULL, &destRect);
 	}

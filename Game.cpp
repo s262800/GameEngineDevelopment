@@ -27,9 +27,8 @@ Game::Game()
 
 	//test objects
 
-	ground1 = scene->CreateStaticGameObject(m_Renderer, "assets/groundTile1.bmp", 100, 270, true);
-	StaticGameObject* ground2 = scene->CreateStaticGameObject(m_Renderer, "assets/groundTile1.bmp", 130, 270, true);
-	StaticGameObject* ground3 = scene->CreateStaticGameObject(m_Renderer, "assets/groundTile1.bmp", 160, 270, true);
+	ground1 = scene->CreateStaticGameObject(m_Renderer, "assets/groundTile1.bmp", 70, 270, true);
+	ground1->obj_transform->SetScale(6, 2);
 
 	player = scene->CreatePlayer(m_Renderer, "assets/robot.bmp", 100, 100, true);
 	StaticGameObject* s = scene->CreateStaticGameObject(m_Renderer, "assets/robot.bmp", 200, 100, true);
@@ -38,8 +37,6 @@ Game::Game()
 	std::vector<Bitmap*> bmps;
 	std::vector<DynamicGameObject*> dgos;
 	sgos.push_back(ground1);
-	sgos.push_back(ground2);
-	sgos.push_back(ground3);
 	//
 
 
