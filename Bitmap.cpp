@@ -1,6 +1,5 @@
 #include "Bitmap.h"
 #include "TextureManager.h"
-#include <iostream>
 using namespace std;
 
 
@@ -8,6 +7,7 @@ using namespace std;
 
 Bitmap::Bitmap(SDL_Renderer* renderer, std::string fileName, int xpos, int ypos, bool useTransparency)
 {
+	logger = new Logger();
 	//Store renderer and file name variables
 	m_pRenderer = renderer;
 	FileName = fileName;
@@ -30,6 +30,7 @@ Bitmap::Bitmap(SDL_Renderer* renderer, std::string fileName, int xpos, int ypos,
 	m_x = xpos;
 	m_y = ypos;
 
+
 }
 
 Bitmap::~Bitmap()
@@ -47,13 +48,13 @@ void Bitmap::Draw()
 	{
 		//SDL_Rect destRect = { m_x, m_y, (xScale * defaultRes) ,(yScale * defaultRes)}; old way to set scale
 
-		SDL_Rect destRect = { m_x, m_y, defaultRes , defaultRes};
+		SDL_Rect destRect = { m_x, m_y, defaultRes , defaultRes };
 
 		SDL_RenderCopy(m_pRenderer, m_pbitmapTexture, NULL, &destRect);
 	}
 
 	else
-		cerr << "Drawing Error";
+		logger->Error("No bitmap texture");
 }
 
 SDL_Texture* Bitmap::GetTextureRef()

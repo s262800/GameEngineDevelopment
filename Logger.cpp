@@ -22,7 +22,7 @@ void Logger::Log(Logger::Category category, const std::string& buffer) // file p
 
     if (category < Category::Error) return;
 
-    std::ofstream errorFile("error.log", std::ios::app);
+    std::ofstream errorFile("Error.log", std::ios::app);
 
     if (!errorFile.is_open())
         return;

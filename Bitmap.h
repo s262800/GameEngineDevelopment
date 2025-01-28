@@ -3,6 +3,7 @@
 #include <string>
 #include "SDL.h"
 #include "SDL_render.h"
+#include "Logger.h"
 
 
 class Bitmap
@@ -29,6 +30,7 @@ private:
 	SDL_Surface* m_pbitmapSurface;
 	SDL_Texture* m_pbitmapTexture;
 	SDL_Rect CollisionRect;
+	Logger* logger;
 
 
 

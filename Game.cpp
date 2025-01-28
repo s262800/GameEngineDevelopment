@@ -32,13 +32,11 @@ Game::Game()
 	StaticGameObject* ground3 = scene->CreateStaticGameObject(m_Renderer, "assets/groundTile1.bmp", 160, 270, true);
 
 	player = scene->CreatePlayer(m_Renderer, "assets/robot.bmp", 100, 100, true);
-	DynamicGameObject* d = scene->CreateDynamicGameObject(m_Renderer, "assets/robot.bmp", 100, 100, true);
 	StaticGameObject* s = scene->CreateStaticGameObject(m_Renderer, "assets/robot.bmp", 200, 100, true);
 
 	std::vector<StaticGameObject*> sgos;
 	std::vector<Bitmap*> bmps;
 	std::vector<DynamicGameObject*> dgos;
-	dgos.push_back(d);
 	sgos.push_back(ground1);
 	sgos.push_back(ground2);
 	sgos.push_back(ground3);
@@ -55,7 +53,7 @@ Game::Game()
 Game::~Game()
 {
 	//clean up.
-	//don't forget - we destroy in the REVERSE order they were created
+	//Destroy in the REVERSE order they were created
 
 	textManager->~Text();
 

@@ -88,10 +88,10 @@ SDL_Window* Scene::CreateWindow(const char* windowName)
 	//create the window
 	window = SDL_CreateWindow(
 		windowName, //title
-		250, //initial x pos#include "SDL_ttf.h"
+		250, //initial x pos
 		50, //initial y pos
-		640, //width, in pixelss
-		480, //height, in pixels
+		1920, //width, in pixelss
+		1080, //height, in pixels
 		0 // window behaviour flags
 	);
 
