@@ -8,6 +8,7 @@
 #include "Bitmap.h"
 #include "DynamicGameObject.h"
 #include "Scene.h"
+#include "Text.hpp"
 
 using namespace std;
 
@@ -21,27 +22,22 @@ class Game
 {
 private:
 	AssetEditor* assetEditor;
+	Text* textManager;
+	Player* player;
+	StaticGameObject* ground1;
 public :
 
 	SDL_Window* m_Window;
 	SDL_Renderer* m_Renderer;
 
+
 	Scene* scene;
-
-
-	//DynamicGameObject* player;
-
-	TTF_Font* m_pSmallFont;
-	TTF_Font* m_pBigFont;
-
-
 
 	Game();
 	~Game();
 
 
 	void CheckEvents(void);
-	void UpdateText(string msg, int x, int y, TTF_Font* font, SDL_Color colour);
 	void Update(void);
 	void SetDisplayColour(int r, int g, int b, int a);
 

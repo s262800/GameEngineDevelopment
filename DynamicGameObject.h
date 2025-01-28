@@ -9,15 +9,18 @@ public:
 	DynamicGameObject(SDL_Renderer* renderer, std::string fileName, int xpos, int ypos, bool useTransparency);
 	~DynamicGameObject();
 
-	void Update();
+	virtual void Update();
 
+	void SetGrounded(bool grounded) { isGrounded = grounded; }
 
-	//void DrawObject(SDL_Renderer* renderer);
+protected:
+	bool isGrounded = false;
 
 private:
 
 	Transform* obj_transform;
 	Bitmap* bitmap;
+
 
 
 };

@@ -13,7 +13,7 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="IMGUI">
+    <Filter Include="Resource Files\IMGUI">
       <UniqueIdentifier>{0d2fde9e-e6d4-4922-b519-ae89981bf87d}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
@@ -43,28 +43,28 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Libraries\imgui-master\imgui.cpp">
-      <Filter>IMGUI</Filter>
+      <Filter>Resource Files\IMGUI</Filter>
     </ClCompile>
     <ClCompile Include="Libraries\imgui-master\imgui_demo.cpp">
-      <Filter>IMGUI</Filter>
+      <Filter>Resource Files\IMGUI</Filter>
     </ClCompile>
     <ClCompile Include="Libraries\imgui-master\imgui_draw.cpp">
-      <Filter>IMGUI</Filter>
+      <Filter>Resource Files\IMGUI</Filter>
     </ClCompile>
     <ClCompile Include="Libraries\imgui-master\imgui_tables.cpp">
-      <Filter>IMGUI</Filter>
+      <Filter>Resource Files\IMGUI</Filter>
     </ClCompile>
     <ClCompile Include="Libraries\imgui-master\imgui_widgets.cpp">
-      <Filter>IMGUI</Filter>
+      <Filter>Resource Files\IMGUI</Filter>
     </ClCompile>
     <ClCompile Include="Libraries\imgui-master\backends\imgui_impl_sdl.cpp">
-      <Filter>IMGUI</Filter>
+      <Filter>Resource Files\IMGUI</Filter>
     </ClCompile>
     <ClCompile Include="Libraries\imgui_sdl-master\imgui_sdl.cpp">
-      <Filter>IMGUI</Filter>
+      <Filter>Resource Files\IMGUI</Filter>
     </ClCompile>
     <ClCompile Include="Libraries\imgui_sdl-master\example.cpp">
-      <Filter>IMGUI</Filter>
+      <Filter>Resource Files\IMGUI</Filter>
     </ClCompile>
     <ClCompile Include="AssetEditor.cpp">
       <Filter>Source Files</Filter>
@@ -73,6 +73,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="StaticGameObject.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Logger.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -102,28 +105,28 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Libraries\imgui-master\imgui.h">
-      <Filter>IMGUI</Filter>
+      <Filter>Resource Files\IMGUI</Filter>
     </ClInclude>
     <ClInclude Include="Libraries\imgui-master\imgui_internal.h">
-      <Filter>IMGUI</Filter>
+      <Filter>Resource Files\IMGUI</Filter>
     </ClInclude>
     <ClInclude Include="Libraries\imgui-master\imstb_rectpack.h">
-      <Filter>IMGUI</Filter>
+      <Filter>Resource Files\IMGUI</Filter>
     </ClInclude>
     <ClInclude Include="Libraries\imgui-master\imstb_textedit.h">
-      <Filter>IMGUI</Filter>
+      <Filter>Resource Files\IMGUI</Filter>
     </ClInclude>
     <ClInclude Include="Libraries\imgui-master\imstb_truetype.h">
-      <Filter>IMGUI</Filter>
+      <Filter>Resource Files\IMGUI</Filter>
     </ClInclude>
     <ClInclude Include="Libraries\imgui-master\imconfig.h">
-      <Filter>IMGUI</Filter>
+      <Filter>Resource Files\IMGUI</Filter>
     </ClInclude>
     <ClInclude Include="Libraries\imgui-master\backends\imgui_impl_sdl.h">
-      <Filter>IMGUI</Filter>
+      <Filter>Resource Files\IMGUI</Filter>
     </ClInclude>
     <ClInclude Include="Libraries\imgui_sdl-master\imgui_sdl.h">
-      <Filter>IMGUI</Filter>
+      <Filter>Resource Files\IMGUI</Filter>
     </ClInclude>
     <ClInclude Include="AssetEditor.h">
       <Filter>Header Files</Filter>
@@ -132,6 +135,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="StaticGameObject.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Text.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Logger.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -60,3 +60,15 @@ SDL_Texture* Bitmap::GetTextureRef()
 {
 	return m_pbitmapTexture;
 }
+
+bool Bitmap::CheckCollision(Bitmap* Other)
+{
+	if (
+		(m_x + m_w >= Other->m_x) && (m_x <= Other->m_x + Other->m_w) &&
+		(m_y + m_h >= Other->m_y) && (m_y <= Other->m_y + Other->m_h)
+		)
+	{
+		return true;
+	}
+	return false;
+}

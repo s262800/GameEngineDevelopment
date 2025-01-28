@@ -23,6 +23,8 @@ public:
 	{
 	}
 
+
+
 	void SetPosition(float x, float y)
 	{
 		posX = x;
@@ -55,7 +57,6 @@ public:
 	{ 
 		return posX; 
 	}
-
 
 	float GetY() const 
 	{ 

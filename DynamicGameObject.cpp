@@ -22,9 +22,9 @@ DynamicGameObject::~DynamicGameObject()
 
 }
 
-void DynamicGameObject::Update()
+ void DynamicGameObject::Update()
 {
-	Draw();
+	
 }
 
 

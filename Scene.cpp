@@ -1,6 +1,8 @@
 #include "Scene.h"
 
 
+//Functions for creating objects
+
 Bitmap* Scene::CreateBitmap(SDL_Renderer* renderer, std::string fileName, int xpos, int ypos, bool useTransparency = false)
 {
 	Bitmap* bmp = new Bitmap(renderer, fileName, xpos, ypos, useTransparency);
@@ -15,6 +17,14 @@ DynamicGameObject* Scene::CreateDynamicGameObject(SDL_Renderer* renderer, std::s
 	return dGameObj;
 }
 
+Player* Scene::CreatePlayer(SDL_Renderer* renderer, std::string fileName, int xpos, int ypos, bool useTransparency)
+{
+	player = new Player(renderer, fileName, xpos, ypos, useTransparency);
+	return player;
+
+
+}
+
 StaticGameObject* Scene::CreateStaticGameObject(SDL_Renderer* renderer, std::string fileName, int xpos, int ypos, bool useTransparency)
 {
 	StaticGameObject* staticGameObj = new StaticGameObject(renderer, fileName, xpos, ypos, useTransparency);
@@ -22,6 +32,9 @@ StaticGameObject* Scene::CreateStaticGameObject(SDL_Renderer* renderer, std::str
 	
 	return staticGameObj;
 }
+
+
+//Functions for managing objects in scene
 
 void Scene::InitialiseObjectLists(std::vector<Bitmap*> bmps, std::vector<StaticGameObject*> sGOs, std::vector<DynamicGameObject*> dGOs)
 {
@@ -38,7 +51,11 @@ void Scene::UpdateAll()
 	{
 		dGO->Update();
 	}
-
+	
+	if (player != nullptr)
+	{
+		player->Update();
+	}
 }
 
 void Scene::DrawAll()
@@ -55,6 +72,65 @@ void Scene::DrawAll()
 	{
 		eR->Draw();
 	}
+
+	if (player != nullptr)
+	{
+		player->Draw();
+	}
+
+
+}
+
+SDL_Window* Scene::CreateWindow(const char* windowName)
+{
+	SDL_Window* window;
+
+	//create the window
+	window = SDL_CreateWindow(
+		windowName, //title
+		250, //initial x pos#include "SDL_ttf.h"
+		50, //initial y pos
+		640, //width, in pixelss
+		480, //height, in pixels
+		0 // window behaviour flags
+	);
+
+
+	if (!window)
+	{
+		printf("WINDOW initialisation failed: %s\n", SDL_GetError());
+		printf("Press any key to continue\n");
+		getchar();
+		return nullptr;
+
+	}
+
+	return window;
+}
+
+
+SDL_Renderer* Scene::CreateRenderer(SDL_Window* window)
+{
+	SDL_Renderer* renderer;
+	
+	//create renderer
+	renderer = SDL_CreateRenderer(
+		window,
+		-1,
+		0
+
+	);
+
+	if (!renderer)
+	{
+		printf("RENDERER intialisation failed: %\n", SDL_GetError());
+		printf("Press any key to continue \n");
+		getchar();
+
+		return nullptr;
+	}
+
+	return renderer;
 
 
 }
@@ -83,8 +159,6 @@ void Scene::SetVectors(std::vector<Bitmap*> bmps, std::vector<StaticGameObject*>
 	else
 		printf("Error2");
 }
-
-
 
 
 
