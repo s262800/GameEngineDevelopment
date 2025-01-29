@@ -7,7 +7,6 @@ using namespace std;
 
 Bitmap::Bitmap(SDL_Renderer* renderer, std::string fileName, int xpos, int ypos, bool useTransparency)
 {
-	logger = new Logger();
 	obj_transform = new Transform(xpos, ypos);
 	//Store renderer and file name variables
 	m_pRenderer = renderer;
@@ -23,8 +22,10 @@ Bitmap::Bitmap(SDL_Renderer* renderer, std::string fileName, int xpos, int ypos,
 
 	if (!m_pbitmapTexture)
 	{
-		printf("Texture for bitamp '%s' not loaded \n", fileName.c_str());
-		printf(" % s\n", SDL_GetError());
+		string Error = ("Texture for bitamp '%s' not loaded \n" , fileName.c_str());
+		string SDLError = (" % s\n", SDL_GetError());
+		Logger::Error(Error);
+		Logger::Error(SDLError);
 	}
 	
 	//Store position values
@@ -58,7 +59,7 @@ void Bitmap::Draw()
 	}
 
 	else
-		logger->Error("No bitmap texture");
+		Logger::Error("No bitmap texture");
 }
 
 SDL_Texture* Bitmap::GetTextureRef()

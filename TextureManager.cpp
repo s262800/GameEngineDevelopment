@@ -45,8 +45,10 @@ SDL_Texture* TextureManager::Load(const std::string fileName, bool useTransparan
 
 		if (!m_surface)
 		{
-			printf("SURFACE for bitmap '%s' not loaded\n", fileName.c_str());
-			printf("%s\n", SDL_GetError());
+			std::string Error = ("SURFACE for bitmap '%s' not loaded\n", fileName.c_str());
+			Logger::Error(Error);
+			std::string SDLError = ("%s\n", SDL_GetError());
+			Logger::Error(SDLError);
 		}
 		else
 		{
@@ -58,8 +60,10 @@ SDL_Texture* TextureManager::Load(const std::string fileName, bool useTransparan
 			m_pbitmapTexture = SDL_CreateTextureFromSurface(PRenderer, m_surface);
 			if (!m_pbitmapTexture)
 			{
-				printf("TEXTURE for bitmap '%s' not loaded!\n", fileName.c_str());
-				printf("%s\n", SDL_GetError());
+				std::string Error = ("TEXTURE for bitmap '%s' not loaded!\n", fileName.c_str());
+				Logger::Error(Error);
+				std::string SDLError = ("%s\n", SDL_GetError());
+				Logger::Error(SDLError);
 			}
 
 			m_textureMap[fileName] = m_pbitmapTexture;

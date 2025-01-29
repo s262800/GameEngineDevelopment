@@ -98,9 +98,11 @@ SDL_Window* Scene::CreateWindow(const char* windowName)
 
 	if (!window)
 	{
-		printf("WINDOW initialisation failed: %s\n", SDL_GetError());
-		printf("Press any key to continue\n");
+		std::string error = ("WINDOW initialisation failed: %s\n", SDL_GetError());
+		Logger::Error(error);
+;		printf("Press any key to continue\n");
 		getchar();
+
 		return nullptr;
 
 	}
@@ -123,8 +125,11 @@ SDL_Renderer* Scene::CreateRenderer(SDL_Window* window)
 
 	if (!renderer)
 	{
-		printf("RENDERER intialisation failed: %\n", SDL_GetError());
+		std::string error = ("RENDERER intialisation failed: %\n", SDL_GetError());
+		Logger::Error(error);
 		printf("Press any key to continue \n");
+
+
 		getchar();
 
 		return nullptr;
@@ -143,21 +148,21 @@ void Scene::SetVectors(std::vector<Bitmap*> bmps, std::vector<StaticGameObject*>
 	}
 
 	else
-		printf("Error");
+		Logger::Error("No bitmaps in scene");
 
 	if (!sGOs.empty())
 	{
 		StaticGameObjects.assign(sGOs.begin(), sGOs.end());
 	}
 	else
-		printf("Error1");
+		Logger::Error("No static gameobjects in scene");
 
 	if (!dGos.empty())
 	{
 		DynamicGameObjects.assign(dGos.begin(), dGos.end());
 	}
 	else
-		printf("Error2");
+		Logger::Error("No dynamic gameobjects in scene");
 }
 
 

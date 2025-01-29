@@ -73,7 +73,6 @@ int main(int argc, char* argv[])
 				
 			}
 			
-			//game->SetDisplayColour(r, g, b, a);
 			game->Update();
 			
 

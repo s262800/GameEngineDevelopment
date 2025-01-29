@@ -2,6 +2,7 @@
 #include <map>
 #include <SDL.h>
 #include <string>
+#include "Logger.h"
 
 class TextureManager
 {

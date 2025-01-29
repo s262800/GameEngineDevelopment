@@ -33,7 +33,6 @@ private:
 	SDL_Surface* m_pbitmapSurface;
 	SDL_Texture* m_pbitmapTexture;
 	SDL_Rect CollisionRect;
-	Logger* logger;
 
 
 

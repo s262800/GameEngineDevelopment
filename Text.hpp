@@ -3,6 +3,7 @@
 #include <string>
 #include "SDL.h"
 #include "SDL_ttf.h"
+#include "Logger.h"
 
 using namespace std;
 
@@ -66,8 +67,8 @@ public:
 
 		if (!surface)
 		{
-			printf("SURFACE for font not loaded \n");
-			printf("%s\n", SDL_GetError());
+			Logger::Error("SURFACE for font not loaded! \n %s\n");
+			Logger::Error(SDL_GetError());
 		}
 
 		else
@@ -75,8 +76,8 @@ public:
 			texture = SDL_CreateTextureFromSurface(renderer, surface);
 			if (!texture)
 			{
-				printf("SURFACE for font not loaded! \n");
-				printf("%s\n", SDL_GetError());
+				Logger::Error("SURFACE for font not loaded! \n %s\n");
+				Logger::Error(SDL_GetError());
 			}
 			else
 			{

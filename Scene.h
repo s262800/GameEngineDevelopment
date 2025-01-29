@@ -4,6 +4,7 @@
 #include "Player.h"
 #include "StaticGameObject.h"
 #include <vector>
+#include "Logger.h"
 
 
 class Scene
