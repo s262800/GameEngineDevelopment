@@ -147,7 +147,6 @@
     <ClCompile Include="Bitmap.cpp" />
     <ClCompile Include="Collider.cpp" />
     <ClCompile Include="DynamicGameObject.cpp" />
-    <ClCompile Include="EventSystem.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="Input.cpp" />
     <ClCompile Include="Libraries\imgui-master\backends\imgui_impl_sdl.cpp" />
@@ -170,7 +169,6 @@
     <ClInclude Include="Bitmap.h" />
     <ClInclude Include="Collider.h" />
     <ClInclude Include="DynamicGameObject.h" />
-    <ClInclude Include="EventSystem.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="Input.h" />
     <ClInclude Include="Libraries\imgui-master\backends\imgui_impl_sdl.h" />
@@ -187,6 +185,7 @@
     <ClInclude Include="StaticGameObject.h" />
     <ClInclude Include="Text.hpp" />
     <ClInclude Include="TextureManager.h" />
+    <ClInclude Include="tinyevents.hpp" />
     <ClInclude Include="Transform.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

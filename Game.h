@@ -10,6 +10,8 @@
 #include "Scene.h"
 #include "Text.hpp"
 
+#include "Input.h"
+
 using namespace std;
 
 class SDL_Window;
@@ -30,7 +32,7 @@ public :
 	SDL_Window* m_Window;
 	SDL_Renderer* m_Renderer;
 
-
+	Input* input;
 	Scene* scene;
 
 	Game();
@@ -41,7 +43,7 @@ public :
 	void Update(void);
 	void SetDisplayColour(int r, int g, int b, int a);
 
-
+	bool isRunning = true;
 };
 
 #endif

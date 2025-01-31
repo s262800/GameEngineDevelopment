@@ -1,3 +1,7 @@
+#ifndef INPUT
+#define INPUT
+
+
 #include <SDL.h>
 #include <map>
 
@@ -5,8 +9,8 @@
 class Input
 {
 public:
-	void KeyIsPressed(SDL_KeyCode key);
-	void KeyReleased(SDL_KeyCode key);
+	void EventKeyIsPressed(SDL_Keycode key);
+	void EventKeyReleased(SDL_Keycode key);
 
 
 	Input();
@@ -16,3 +20,5 @@ private:
 	std::map<SDL_Keycode, bool> keysPressed;
 
 };
+
+#endif

@@ -2,12 +2,12 @@
 #include "Game.h"
 #include "Input.h"
 #include "Bitmap.h"
-#include "EventSystem.h"
 #include "imgui.h"
 #include "backends/imgui_impl_sdl.h"
 #include "imgui_sdl.h"
 #include "imgui_internal.h"
 #include "AssetEditor.h"
+#include "tinyevents.hpp"
 
 void SetUpIMGUI(Game* game)
 {
@@ -35,64 +35,18 @@ void SetUpIMGUI(Game* game)
 int main(int argc, char* argv[])
 {
 	Game* game = new Game();
-	Input* input = new Input();
 	AssetEditor* assetEditpor = new AssetEditor(game->m_Renderer, game->m_Window);
 
 	SetUpIMGUI(game);
 
-	
-	if (game && input)
-
+	while (game->isRunning)
 	{
-		Uint8 r = 127, g = 127, b = 127, a = 255;
-
-		while (input->KeyIsPressed(KEY_ESCAPE))
-		{
-	
-			input->Update();	
-
-			if (input->KeyIsPressed(KEY_R))
-			{
-				//if (++r > 255) r = 0;
-			}
-
-			if (input->KeyIsPressed(KEY_G))
-			{
-				//if (++g > 255) g = 0;
-			}
-
-
-			if (input->KeyIsPressed(KEY_B))
-			{
-				//if (++b > 255) b = 0;
-			}
-
-			if (input->KeyIsPressed(KEY_A))
-			{
-				
-			}
-
-			if (input->KeyIsPressed(KEY_D))
-			{
-				
-			}
-			
-			game->Update();
-			
-
-		}
-
-
-		delete input;
-		input = nullptr;
-
-
-		delete game;
-		game = nullptr;
+		game->Update(); //Update the game
 	}
 
-	
-	
+
+	delete game;
+	game = nullptr;
 
 
 	return 0;

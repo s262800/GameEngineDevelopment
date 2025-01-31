@@ -14,6 +14,7 @@ Game::Game()
 	m_Renderer = nullptr;
 	scene = new Scene();
 	textManager = new Text();
+	input = new Input();
 
 	//start up
 	SDL_Init(SDL_INIT_VIDEO);	
@@ -99,6 +100,30 @@ void Game::Update(void)
 
 void Game::CheckEvents(void)
 {
+	SDL_Event event;
+	//loop throuh all the events in the event list
+	while (SDL_PollEvent(&event) != NULL)
+	{
+		// Check for keydown
+		if (event.type == SDL_KEYDOWN)
+		{
+			input->EventKeyIsPressed(event.key.keysym.sym);
+		}
+		//check for key up
+		else if (event.type == SDL_KEYUP)
+		{
+			input->EventKeyReleased(event.key.keysym.sym);
+		}
+		else if (event.type == SDL_QUIT)
+		{
+			return;
+		}
+	}
+
+	/*if (input->KeyIsPressed(SDLK_ESCAPE))
+	{
+		_isRunning = false;
+	}*/
 }
 
 
