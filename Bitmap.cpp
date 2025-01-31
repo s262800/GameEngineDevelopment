@@ -1,7 +1,7 @@
 #include "Bitmap.h"
 #include "TextureManager.h"
-using namespace std;
 
+using namespace std;
 
 
 
@@ -32,6 +32,10 @@ Bitmap::Bitmap(SDL_Renderer* renderer, std::string fileName, int xpos, int ypos,
 	m_x = xpos;
 	m_y = ypos;
 
+	//Set width and height from surface
+	m_h = m_pbitmapSurface->h;
+	m_w = m_pbitmapSurface->w;
+
 
 }
 
@@ -48,10 +52,11 @@ void Bitmap::Draw()
 {
 	if (m_pbitmapTexture)
 	{
-		m_w = obj_transform->GetXScale();
-		m_h = obj_transform->GetYScale();
-		
+
 		SDL_Rect destRect = { m_x, m_y, (obj_transform->GetXScale() * defaultRes) ,(obj_transform->GetYScale() * defaultRes)};
+
+		m_w = obj_transform->GetXScale() * defaultRes;
+		m_h = obj_transform->GetYScale()* defaultRes;
 
 		//SDL_Rect destRect = { m_x, m_y, defaultRes , defaultRes };
 
@@ -67,6 +72,7 @@ SDL_Texture* Bitmap::GetTextureRef()
 	return m_pbitmapTexture;
 }
 
+
 bool Bitmap::CheckCollision(Bitmap* Other)
 {
 	if (
@@ -78,3 +84,5 @@ bool Bitmap::CheckCollision(Bitmap* Other)
 	}
 	return false;
 }
+
+

@@ -27,7 +27,7 @@ Game::Game()
 
 	//test objects
 
-	ground1 = scene->CreateStaticGameObject(m_Renderer, "assets/groundTile1.bmp", 70, 270, true);
+	ground1 = scene->CreateStaticGameObject(m_Renderer, "assets/groundTile1.bmp", 70, 670, true);
 	ground1->obj_transform->SetScale(6, 2);
 
 	player = scene->CreatePlayer(m_Renderer, "assets/robot.bmp", 100, 100, true);
@@ -78,7 +78,7 @@ void Game::Update(void)
 	textManager->SetAllText(m_Renderer);
 
 	player->SetGrounded(player->CheckCollision(ground1));
-	player->FixGroundCollision(ground1);
+	//player->FixGroundCollision(ground1);
 
 	//GUI
 	ImGui::NewFrame();

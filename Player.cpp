@@ -27,7 +27,6 @@ void Player::FixGroundCollision(StaticGameObject* ground)
 {
 	while (CheckCollision(ground))
 	{
-		printf("adf");
 		m_y -= 1;
 	}
 }
