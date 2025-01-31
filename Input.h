@@ -1,31 +1,18 @@
 #include <SDL.h>
-
-
-enum KEYS_PRESSED_LIST
-{
-	KEY_ESCAPE, 
-	KEY_Q,
-	KEY_W,
-	KEY_R, 
-	KEY_G, 
-	KEY_B,
-	KEY_A,
-	KEY_S,
-	KEY_D,	
-	SIZE_OF_KEYS_PRESSED_ENUM
-};
+#include <map>
 
 
 class Input
 {
 public:
-	void Update(void);
-	bool KeyIsPressed(KEYS_PRESSED_LIST key);
+	void KeyIsPressed(SDL_KeyCode key);
+	void KeyReleased(SDL_KeyCode key);
+
 
 	Input();
 	~Input();
 
 private:
-	SDL_Event m_event;
-	bool m_keysPressed[SIZE_OF_KEYS_PRESSED_ENUM];
+	std::map<SDL_Keycode, bool> keysPressed;
+
 };

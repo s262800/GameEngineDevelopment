@@ -1,74 +1,15 @@
 #include "Input.h"
 
-
-void Input::Update(void)
+void Input::KeyIsPressed(SDL_KeyCode key)
 {
-	while (SDL_PollEvent(&m_event) != NULL)
-	{
-		if (m_event.type == SDL_KEYDOWN)
-		{
-			SDL_Keycode keyPressed = m_event.key.keysym.sym;
-
-			switch (keyPressed)
-			{
-			case SDLK_ESCAPE:
-				m_keysPressed[KEY_ESCAPE] = true;
-				break;
-			case SDLK_r:
-				m_keysPressed[KEY_R] = true;
-				break;
-			case SDLK_g:
-				m_keysPressed[KEY_G] = true;
-				break;
-			case SDLK_b:
-				m_keysPressed[KEY_B] = true;
-				break;
-			case SDLK_w:
-				m_keysPressed[KEY_W] = true;
-				break;
-			case SDLK_a:
-				m_keysPressed[KEY_A] = true;
-				break;
-
-
-			}
-
-
-		}
-
-		else if (m_event.type == SDL_KEYUP)
-		{
-			SDL_Keycode keyPressed = m_event.key.keysym.sym;
-
-			switch (keyPressed)
-			{
-			case SDLK_ESCAPE:
-				m_keysPressed[KEY_ESCAPE] = false;
-				break;
-			case SDLK_r:
-				m_keysPressed[KEY_R] = false;
-				break;
-			case SDLK_g:
-				m_keysPressed[KEY_G] = false;
-				break;
-			case SDLK_b:
-				m_keysPressed[KEY_B] = false;
-				break;
-
-			}
-		}
-
-
-
-
-	}
+	keysPressed.insert_or_assign(key, true);
 }
 
-bool Input::KeyIsPressed(KEYS_PRESSED_LIST key)
+void Input::KeyReleased(SDL_KeyCode key)
 {
-	return m_keysPressed[key];
-
+	keysPressed.insert_or_assign(key, false);
 }
+
 
 Input::Input()
 {

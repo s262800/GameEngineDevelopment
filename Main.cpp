@@ -9,13 +9,8 @@
 #include "imgui_internal.h"
 #include "AssetEditor.h"
 
-
-int main(int argc, char* argv[])
+void SetUpIMGUI(Game* game)
 {
-	Game* game = new Game();
-	Input* input = new Input();
-
-
 	//imGUI Setup
 	IMGUI_CHECKVERSION();
 	ImGui::CreateContext();
@@ -33,8 +28,17 @@ int main(int argc, char* argv[])
 	ImGui_ImplSDL2_InitForOpenGL(game->m_Window, SDL_GL_GetCurrentContext());
 
 
-	AssetEditor(game->m_Renderer, game->m_Window);
 
+}
+
+
+int main(int argc, char* argv[])
+{
+	Game* game = new Game();
+	Input* input = new Input();
+	AssetEditor* assetEditpor = new AssetEditor(game->m_Renderer, game->m_Window);
+
+	SetUpIMGUI(game);
 
 	
 	if (game && input)
@@ -91,12 +95,11 @@ int main(int argc, char* argv[])
 	
 
 
-
-
-
 	return 0;
 
 
 	SDL_Quit();
 
 }
+
+
