@@ -10,14 +10,14 @@ public:
 
 	virtual void Update();
 
-	void SetGrounded(bool grounded) { isGrounded = grounded; }
+
+	void SetGrounded(bool grounded);
 
 protected:
 	bool isGrounded = false;
 
+
 private:
-
-
 	Bitmap* bitmap;
 
 

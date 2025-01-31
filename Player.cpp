@@ -23,9 +23,9 @@ void Player::Update()
 	}
 }
 
-void Player::FixGroundCollision(StaticGameObject* ground)
+void Player::FixGroundCollision(Collider* ground)
 {
-	while (CheckCollision(ground))
+	while (collider->CheckCollision(ground))
 	{
 		m_y -= 1;
 	}

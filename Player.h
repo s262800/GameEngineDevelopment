@@ -10,7 +10,7 @@ public:
 
 	void Update() override;
 
-	void FixGroundCollision(StaticGameObject* ground);
+	void FixGroundCollision(Collider* ground);
 
 private:
 	float yVelocity;

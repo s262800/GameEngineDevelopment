@@ -9,3 +9,13 @@ StaticGameObject::StaticGameObject(SDL_Renderer* renderer, std::string fileName,
 StaticGameObject::~StaticGameObject()
 {
 }
+
+//Collider* StaticGameObject::GetCollider()
+//{
+//	if (collider == nullptr) return nullptr;
+//
+//	return collider;
+//
+//}
+
+

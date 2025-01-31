@@ -15,8 +15,6 @@ DynamicGameObject::DynamicGameObject(SDL_Renderer* renderer, std::string fileNam
 
 }
 
-
-
 DynamicGameObject::~DynamicGameObject()
 {
 
@@ -26,6 +24,20 @@ DynamicGameObject::~DynamicGameObject()
 {
 	
 }
+
+ void DynamicGameObject::SetGrounded(bool grounded)
+ {
+	 isGrounded = grounded;
+ }
+
+ //Collider* DynamicGameObject::GetCollider()
+ //{
+	// if (collider == nullptr) return nullptr;
+	// 
+	// return collider;
+ //}
+
+
 
 
 

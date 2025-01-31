@@ -77,8 +77,10 @@ void Game::Update(void)
 
 	textManager->SetAllText(m_Renderer);
 
-	player->SetGrounded(player->CheckCollision(ground1));
-	//player->FixGroundCollision(ground1);
+	//player->SetGrounded(player->CheckCollision(ground1));
+	
+	player->SetGrounded(player->GetCollider()->CheckCollision(ground1->GetCollider()));
+	player->FixGroundCollision(ground1->GetCollider());
 
 	//GUI
 	ImGui::NewFrame();

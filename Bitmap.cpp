@@ -35,8 +35,6 @@ Bitmap::Bitmap(SDL_Renderer* renderer, std::string fileName, int xpos, int ypos,
 	//Set width and height from surface
 	m_h = m_pbitmapSurface->h;
 	m_w = m_pbitmapSurface->w;
-
-
 }
 
 Bitmap::~Bitmap()
@@ -48,6 +46,16 @@ Bitmap::~Bitmap()
 		SDL_FreeSurface;
 }
 
+Collider* Bitmap::GetCollider()
+{
+	return collider;
+}
+
+void Bitmap::SetCollider()
+{
+	collider = new Collider(m_w, m_h, m_x, m_y);
+}
+
 void Bitmap::Draw()
 {
 	if (m_pbitmapTexture)
@@ -57,6 +65,8 @@ void Bitmap::Draw()
 
 		m_w = obj_transform->GetXScale() * defaultRes;
 		m_h = obj_transform->GetYScale()* defaultRes;
+
+		SetCollider();
 
 		//SDL_Rect destRect = { m_x, m_y, defaultRes , defaultRes };
 
@@ -73,16 +83,16 @@ SDL_Texture* Bitmap::GetTextureRef()
 }
 
 
-bool Bitmap::CheckCollision(Bitmap* Other)
-{
-	if (
-		(m_x + m_w >= Other->m_x) && (m_x <= Other->m_x + Other->m_w) &&
-		(m_y + m_h >= Other->m_y) && (m_y <= Other->m_y + Other->m_h)
-		)
-	{
-		return true;
-	}
-	return false;
-}
+//bool Bitmap::CheckCollision(Bitmap* Other)
+//{
+//	if (
+//		(m_x + m_w >= Other->m_x) && (m_x <= Other->m_x + Other->m_w) &&
+//		(m_y + m_h >= Other->m_y) && (m_y <= Other->m_y + Other->m_h)
+//		)
+//	{
+//		return true;
+//	}
+//	return false;
+//}
 
 
