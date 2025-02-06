@@ -9,7 +9,7 @@
 #include "DynamicGameObject.h"
 #include "Scene.h"
 #include "Text.hpp"
-
+#include "Events.h"
 #include "Input.h"
 
 using namespace std;
@@ -34,6 +34,7 @@ public :
 
 	Input* input;
 	Scene* scene;
+	Events* events;
 
 	Game();
 	~Game();

@@ -7,7 +7,6 @@
 #include "imgui_sdl.h"
 #include "imgui_internal.h"
 #include "AssetEditor.h"
-#include "tinyevents.hpp"
 
 void SetUpIMGUI(Game* game)
 {
@@ -27,10 +26,7 @@ void SetUpIMGUI(Game* game)
 
 	ImGui_ImplSDL2_InitForOpenGL(game->m_Window, SDL_GL_GetCurrentContext());
 
-
-
 }
-
 
 int main(int argc, char* argv[])
 {
@@ -38,6 +34,7 @@ int main(int argc, char* argv[])
 	AssetEditor* assetEditpor = new AssetEditor(game->m_Renderer, game->m_Window);
 
 	SetUpIMGUI(game);
+
 
 	while (game->isRunning)
 	{

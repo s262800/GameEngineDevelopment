@@ -11,6 +11,7 @@ public:
 	void Update() override;
 
 	void FixGroundCollision(Collider* ground);
+	void Jump();
 
 private:
 	float yVelocity;

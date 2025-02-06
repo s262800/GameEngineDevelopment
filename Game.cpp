@@ -8,6 +8,7 @@
 #include "imgui_internal.h"
 #include "AssetEditor.h"
 
+
 Game::Game()
 {
 	m_Window = nullptr;
@@ -15,6 +16,7 @@ Game::Game()
 	scene = new Scene();
 	textManager = new Text();
 	input = new Input();
+	events = new Events();
 
 	//start up
 	SDL_Init(SDL_INIT_VIDEO);	
@@ -46,7 +48,11 @@ Game::Game()
 	scene->InitialiseObjectLists(bmps, sgos, dgos);
 	scene->DrawAll();
 
+
+	events->FireEvent(PLAYER_JUMP);
+
 }
+
 
 Game::~Game()
 {
