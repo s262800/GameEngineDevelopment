@@ -6,13 +6,14 @@
 #include "backends/imgui_impl_sdl.h"
 #include "imgui_sdl.h"
 #include "imgui_internal.h"
-#include "AssetEditor.h"
+
 
 
 Game::Game()
 {
 	m_Window = nullptr;
 	m_Renderer = nullptr;
+
 	scene = new Scene();
 	textManager = new Text();
 	input = new Input();
@@ -26,6 +27,7 @@ Game::Game()
 	m_Renderer = scene->CreateRenderer(m_Window);
 	SetDisplayColour(127, 127, 127, 255);
 	assetEditor = new AssetEditor(m_Renderer, m_Window);
+	 sceneHierachyUI = new SceneHierachyUI(scene);
 	textManager->OpenFonts();
 
 	//test objects
@@ -94,6 +96,8 @@ void Game::Update(void)
 	ImGui_ImplSDL2_NewFrame(m_Window);
 	
 	assetEditor->Update();
+	sceneHierachyUI->Update();
+
 
 	ImGui::Render();
 	ImGuiSDL::Render(ImGui::GetDrawData());

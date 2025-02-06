@@ -1,6 +1,12 @@
-#pragma once
-#include <SDL.h>
+#include "imgui.h"
+#include "backends/imgui_impl_sdl.h"
+#include "imgui_sdl.h"
+#include "imgui_internal.h"
+#include "Bitmap.h"
+#include <filesystem>
 #include <vector>
+#include <iostream>
+#include "SDL.h"
 
 class AssetEditor
 {

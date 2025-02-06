@@ -3,7 +3,6 @@
 #include "Player.h"
 
 struct jump{
-	EventType type = PLAYER_JUMP;
 	Player* player;
 };
 
@@ -23,7 +22,7 @@ public:
 	void CheckEvents();
 	void FireEvent(EventType e);
 	std::vector<EventType> eventTypes;
-	typedef std::map<EventType, std::vector<IEventHandler*>> eventMap;
+	//typedef std::map<EventType, std::vector<IEventHandler*>> eventMap;
 
 private:
 	tinyevents::Dispatcher dispatcher;

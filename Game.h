@@ -11,8 +11,11 @@
 #include "Text.hpp"
 #include "Events.h"
 #include "Input.h"
+#include "SceneHierachyUI.h"
+#include "AssetEditor.h"
 
 using namespace std;
+using namespace GUI;
 
 class SDL_Window;
 class SDL_Renderer;
@@ -24,9 +27,11 @@ class Game
 {
 private:
 	AssetEditor* assetEditor;
+
 	Text* textManager;
 	Player* player;
 	StaticGameObject* ground1;
+	SceneHierachyUI* sceneHierachyUI;
 public :
 
 	SDL_Window* m_Window;
@@ -35,7 +40,6 @@ public :
 	Input* input;
 	Scene* scene;
 	Events* events;
-
 	Game();
 	~Game();
 

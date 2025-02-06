@@ -5,6 +5,7 @@
 #include "StaticGameObject.h"
 #include <vector>
 #include "Logger.h"
+#include "ConstantValues.h"
 
 
 class Scene

@@ -6,7 +6,7 @@
 #include "backends/imgui_impl_sdl.h"
 #include "imgui_sdl.h"
 #include "imgui_internal.h"
-#include "AssetEditor.h"
+
 
 void SetUpIMGUI(Game* game)
 {

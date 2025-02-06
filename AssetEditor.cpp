@@ -1,12 +1,3 @@
-#include "imgui.h"
-#include "backends/imgui_impl_sdl.h"
-#include "imgui_sdl.h"
-#include "imgui_internal.h"
-#include "Bitmap.h"
-#include "Game.h"
-#include <filesystem>
-#include <vector>
-#include <iostream>
 #include "AssetEditor.h"
 
 AssetEditor::AssetEditor(SDL_Renderer* renderer, SDL_Window* window)
@@ -37,7 +28,7 @@ void AssetEditor::Update()
 	/////////////////////////////////For Draging
 	if (ImGui::IsMouseReleased(ImGuiMouseButton_Left) && AssetMouseDrag != nullptr)
 	{
-		cout << "Test" << endl;
+		Logger::Info("Obj placed");
 		int x, y;
 		SDL_GetMouseState(&x, &y);
 		Bitmap* bmp = new Bitmap(p_Renderer, AssetMouseDrag->FileName, x, y, true);
