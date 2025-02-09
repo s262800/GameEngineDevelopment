@@ -149,9 +149,6 @@
     <ClInclude Include="Collider.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="tinyevents.hpp">
-      <Filter>Resource Files</Filter>
-    </ClInclude>
     <ClInclude Include="Events.h">
       <Filter>Header Files</Filter>
     </ClInclude>

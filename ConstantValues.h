@@ -1,10 +1,10 @@
 #pragma once
 
 
-	const int 
-		screenPosX = 250, 
-		screenPosY = 50, 
-		screenW = 1920, 
-		screenH = 1080;
+const int
+	screenW = 1920,
+	screenH = 1080,
+	screenPosX = 0,
+	screenPosY = 50;
 
 

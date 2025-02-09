@@ -1,33 +1,78 @@
 #pragma once
-#include "tinyevents.hpp"
 #include "Player.h"
+#include <map>
+#include "Logger.h"
 
-struct jump{
-	Player* player;
+using namespace std;
+
+
+struct Variant
+{
+    enum Type
+    {
+        TYPE_INTEGER,
+        TYPE_FLOAT,
+        TYPE_BOOL,
+        TYPE_STRING_ID,
+        TYPE_COUNT
+    };
+
+    Type type;
+
+    union
+    {
+        int asInteger;
+        float asFloat;
+        bool asBool;
+        unsigned long asStringId;
+    };
 };
 
 
-	enum EventType
-	{
-		PLAYER_JUMP,
-		PLAYER_MOVE,
-		EVENTTYPE_COUNT
-	};
+
+enum EventType
+{
+	E_PLAYER_JUMP,
+	E_PLAYER_MOVE,
+	E_EVENTTYPE_COUNT
+};
+
+	
+class IEvent
+{
+public:
+    IEvent(EventType eventType);
+    EventType type;
+    
+
+};
+
+
+
+class IEventHandler
+{
+public:
+    void OnEvent(IEvent* event, Player* player);
+};
+
+
+typedef std::map<EventType, std::vector<IEventHandler*>> eventMap;
+
 
 class Events
 {
 public:
 
-	Events();
-	void CheckEvents();
-	void FireEvent(EventType e);
-	std::vector<EventType> eventTypes;
-	//typedef std::map<EventType, std::vector<IEventHandler*>> eventMap;
+    Events();
+    bool AddListener(EventType type, IEventHandler* listener);
+
+    void FireEvent(EventType type, IEvent* event);
+    void FireEvent(EventType type, IEvent* event, Player* player);
+
 
 private:
-	tinyevents::Dispatcher dispatcher;
-	void SetListeners();
-
+	eventMap listeners;
+    Player* player = nullptr;
 };
 
 

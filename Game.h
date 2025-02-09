@@ -44,7 +44,8 @@ public :
 	~Game();
 
 
-	void CheckEvents(void);
+	void SetInput(void);
+	void CheckEvents();
 	void Update(void);
 	void SetDisplayColour(int r, int g, int b, int a);
 

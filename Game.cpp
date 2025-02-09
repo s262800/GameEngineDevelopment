@@ -1,7 +1,7 @@
 #include "Game.h"
 #include "DynamicGameObject.h"
 #include "Player.h"
-
+#include "Events.h"
 #include "imgui.h"
 #include "backends/imgui_impl_sdl.h"
 #include "imgui_sdl.h"
@@ -51,7 +51,6 @@ Game::Game()
 	scene->DrawAll();
 
 
-	events->FireEvent(PLAYER_JUMP);
 
 }
 
@@ -78,18 +77,20 @@ Game::~Game()
 
 void Game::Update(void)
 {
-	CheckEvents();
+	SetInput();
+
 	SDL_RenderClear(m_Renderer);
-	
+
+
+
 	scene->DrawAll();
 	scene->UpdateAll();
 
 	textManager->SetAllText(m_Renderer);
 
-	//player->SetGrounded(player->CheckCollision(ground1));
-	
 	player->SetGrounded(player->GetCollider()->CheckCollision(ground1->GetCollider()));
-	player->FixGroundCollision(ground1->GetCollider());
+//	printf("fg");
+	//player->FixGroundCollision(ground1->GetCollider());
 
 	//GUI
 	ImGui::NewFrame();
@@ -103,12 +104,12 @@ void Game::Update(void)
 	ImGuiSDL::Render(ImGui::GetDrawData());
 	//END GUI
 
-
     SDL_RenderPresent(m_Renderer);
+
 	SDL_Delay(16);
 }
 
-void Game::CheckEvents(void)
+void Game::SetInput(void)
 {
 	SDL_Event event;
 	//loop throuh all the events in the event list
@@ -118,11 +119,13 @@ void Game::CheckEvents(void)
 		if (event.type == SDL_KEYDOWN)
 		{
 			input->EventKeyIsPressed(event.key.keysym.sym);
+			CheckEvents();
 		}
 		//check for key up
 		else if (event.type == SDL_KEYUP)
 		{
 			input->EventKeyReleased(event.key.keysym.sym);
+			CheckEvents();
 		}
 		else if (event.type == SDL_QUIT)
 		{
@@ -130,10 +133,27 @@ void Game::CheckEvents(void)
 		}
 	}
 
-	/*if (input->KeyIsPressed(SDLK_ESCAPE))
+}
+
+void Game::CheckEvents()
+{
+	for (auto key : input->GetKeys())
 	{
-		_isRunning = false;
-	}*/
+		switch (key)
+		{
+		case SDLK_SPACE:
+			events->FireEvent(E_PLAYER_JUMP, new IEvent(E_PLAYER_JUMP), player);
+			break;
+		case SDLK_ESCAPE:
+			isRunning = false;
+			break;
+
+
+		}
+
+
+	}
+
 }
 
 

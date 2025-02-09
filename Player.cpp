@@ -33,8 +33,11 @@ void Player::FixGroundCollision(Collider* ground)
 
 void Player::Jump()
 {
-	isGrounded = false;
-	yVelocity = -jumpForce;
+	if (isGrounded)
+	{
+		isGrounded = false;
+		yVelocity = -jumpForce;
+	}
 }
 
 

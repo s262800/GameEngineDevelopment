@@ -41,7 +41,6 @@ int main(int argc, char* argv[])
 		game->Update(); //Update the game
 	}
 
-
 	delete game;
 	game = nullptr;
 

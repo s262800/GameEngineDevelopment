@@ -16,7 +16,7 @@ public:
 private:
 	float yVelocity;
 
-	const float jumpForce = 30.0f;
+	const float jumpForce = 50.0f;
 
 
 };

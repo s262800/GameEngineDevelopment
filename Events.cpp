@@ -1,57 +1,60 @@
 #include "Events.h"
 #include <iostream>
-
-using namespace tinyevents;
-
-
+#include <string>
 
 
 Events::Events()
 {
-	for (int i = 0; i < EVENTTYPE_COUNT; i++) {
-		eventTypes.push_back(static_cast<EventType>(i));
-	}
-
-
-	SetListeners();
+    AddListener(E_PLAYER_JUMP, new IEventHandler());
 }
 
-void Events::CheckEvents()
+bool Events::AddListener(EventType type, IEventHandler* listener)
 {
-	
-
-
+    listeners[type].push_back(listener);
+    return true;
 }
 
-void Events::FireEvent(EventType e)
+void Events::FireEvent(EventType type, IEvent* event)
 {
-	for (auto thisEvent : eventTypes)
-	{
-		if (e == thisEvent)
-		{
-
-			//dispatcher.queue(e);
-			dispatcher.dispatch(e);
-
-		}
-
-
-	}
-
-
+    for (IEventHandler* handler : listeners[type])
+    {
+        handler->OnEvent(event, nullptr);
+    }
 }
 
-void Events::SetListeners()
+void Events::FireEvent(EventType type, IEvent* event, Player* player)
 {
-	//Set jump listener
-	auto handle = dispatcher.listen<jump>([](const auto& event)
-		{
-			event.player->Jump();
-		});
+    Logger::Info("FiredEvent with player");
+    player = player;
+    for (IEventHandler* handler : listeners[type])
+    {
+        handler->OnEvent(event, player);
+    }
+}
 
+IEvent::IEvent(EventType eventType)
+{
+    type = eventType;
+}
 
+void IEventHandler::OnEvent(IEvent* event, Player* player)
+{
+    switch (event->type)
+    {
+    case E_PLAYER_MOVE:
+        //
+        break;
 
+    case E_PLAYER_JUMP:
+        player->Jump();
+        break;
 
+        // ...
+
+    default:
+        break;
+    }
 
 }
+
 

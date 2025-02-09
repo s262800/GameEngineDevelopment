@@ -14,6 +14,21 @@ void Input::EventKeyReleased(SDL_Keycode key)
 
 
 
+std::vector<SDL_Keycode> Input::GetKeys()
+{
+	std::vector<SDL_Keycode> s;
+	
+	for (const auto& [key, isTrue] : keysPressed)
+	{
+		if (isTrue == true)
+		{
+			s.push_back(key);
+		}
+	}
+
+	return s;
+}
+
 Input::Input()
 {
 
