@@ -33,9 +33,14 @@ Game::Game()
 	//test objects
 
 	ground1 = scene->CreateStaticGameObject(m_Renderer, "assets/groundTile1.bmp", 70, 670, true);
-	ground1->obj_transform->SetScale(6, 2);
+	ground1->obj_transform->SetScale(12, 4);
+
+
+
+
 
 	player = scene->CreatePlayer(m_Renderer, "assets/robot.bmp", 100, 100, true);
+	player->obj_transform->SetScale(2, 2);
 	StaticGameObject* s = scene->CreateStaticGameObject(m_Renderer, "assets/robot.bmp", 200, 100, true);
 
 	std::vector<StaticGameObject*> sgos;
