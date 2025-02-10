@@ -11,8 +11,8 @@ TextureManager::~TextureManager()
 {
 	for (auto value : m_textureMap)
 	{
-		delete value.second;
-		value.second = nullptr;
+		SDL_DestroyTexture(value.second.tex);
+		value.second.tex = nullptr;
 	}
 }
 
@@ -21,13 +21,13 @@ void TextureManager::Unload(const std::string fileName)
 	auto searchResult = m_textureMap.find(fileName);
 	if(searchResult != m_textureMap.end())
 	{
-		delete m_textureMap[fileName];
-		m_textureMap[fileName] = nullptr;
+		SDL_DestroyTexture(m_textureMap[fileName].tex);
+		m_textureMap[fileName].tex = nullptr;
 		m_textureMap.erase(searchResult);
 	}
 }
 
-SDL_Texture* TextureManager::Load(const std::string fileName, bool useTransparancy, SDL_Renderer* PRenderer)
+SDL_Texture* TextureManager::Load(const std::string fileName, bool useTransparancy, SDL_Renderer* PRenderer, int& w, int& h)
 {
 	SDL_Texture* m_pbitmapTexture = nullptr;
 	
@@ -35,7 +35,12 @@ SDL_Texture* TextureManager::Load(const std::string fileName, bool useTransparan
 	auto searchresult = m_textureMap.find(fileName);
 	if (searchresult != m_textureMap.end())
 	{
-		m_pbitmapTexture = m_textureMap[fileName];
+		TextureData texData = m_textureMap[fileName];
+		w = texData.width;
+		h = texData.height;
+		
+
+
 	}
 	else // not found, load, save and return
 	{
@@ -66,7 +71,9 @@ SDL_Texture* TextureManager::Load(const std::string fileName, bool useTransparan
 				Logger::Error(SDLError);
 			}
 
-			m_textureMap[fileName] = m_pbitmapTexture;
+			//m_textureMap[fileName] = m_pbitmapTexture;
+			w = m_surface->w;
+			h = m_surface->h;
 		}
 	}
 	

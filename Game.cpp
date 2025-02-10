@@ -27,7 +27,7 @@ Game::Game()
 	m_Renderer = scene->CreateRenderer(m_Window);
 	SetDisplayColour(127, 127, 127, 255);
 	assetEditor = new AssetEditor(m_Renderer, m_Window);
-	 sceneHierachyUI = new SceneHierachyUI(scene);
+	sceneHierachyUI = new SceneHierachyUI(scene);
 	textManager->OpenFonts();
 
 	//test objects
@@ -89,7 +89,7 @@ void Game::Update(void)
 	textManager->SetAllText(m_Renderer);
 
 	player->SetGrounded(player->GetCollider()->CheckCollision(ground1->GetCollider()));
-//	printf("fg");
+
 	//player->FixGroundCollision(ground1->GetCollider());
 
 	//GUI

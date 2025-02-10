@@ -24,7 +24,7 @@ void Events::FireEvent(EventType type, IEvent* event)
 
 void Events::FireEvent(EventType type, IEvent* event, Player* player)
 {
-    Logger::Info("FiredEvent with player");
+    Logger::Info("Fired event with player");
     player = player;
     for (IEventHandler* handler : listeners[type])
     {

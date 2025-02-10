@@ -30,7 +30,8 @@ public:
 protected:
 	
 	SDL_Renderer* m_pRenderer;
-	float m_x, m_y, m_h, m_w;
+	float m_x, m_y;
+	int m_h, m_w;
 	Collider* collider = nullptr;
 
 private:

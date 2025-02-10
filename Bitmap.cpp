@@ -15,7 +15,7 @@ Bitmap::Bitmap(SDL_Renderer* renderer, std::string fileName, int xpos, int ypos,
 
 	TextureManager* textureManager = new TextureManager();
 
-	m_pbitmapTexture = textureManager->Load(fileName, useTransparency, m_pRenderer);
+	m_pbitmapTexture = textureManager->Load(fileName, useTransparency, m_pRenderer, m_h, m_w);
 	m_pbitmapSurface = textureManager->m_surface;
 
 	//SDL_CreateTextureFromSurface(m_pRenderer, m_pbitmapSurface);
@@ -31,10 +31,6 @@ Bitmap::Bitmap(SDL_Renderer* renderer, std::string fileName, int xpos, int ypos,
 	//Store position values
 	m_x = xpos;
 	m_y = ypos;
-
-	//Set width and height from surface
-	m_h = m_pbitmapSurface->h;
-	m_w = m_pbitmapSurface->w;
 }
 
 Bitmap::~Bitmap()
