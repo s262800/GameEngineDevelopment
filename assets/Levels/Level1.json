@@ -1,0 +1,15 @@
+{
+  "name": "Level 1",
+  "entities":[
+    {
+      "type": "player",
+      "sprite": "assets/robot.bmp",
+      "xpos": 300,
+      "ypos": 450,
+      "transparent": true,
+      "direction": -1
+    }
+   
+  ]
+
+}
