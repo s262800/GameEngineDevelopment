@@ -1,15 +1,36 @@
+/*file structure:
+ 
+  {
+  "name": "Scene Name",
+  "objects":[
+    {
+      "objectType": "objectType", (DGO -> Dynamic Game Object, STO -> Static Game Object, ER -> Empty Renderable
+      "sprite": "objects sprite filepath",
+      "xpos": objects X pos,
+      "ypos": objects Y pos,
+      "transparent": isObjectTransparent,
+      "direction": objectsFacingDirection 
+    }
+   
+  ]
+
+}
+  */
+
+
+
 {
   "name": "Level 1",
-  "entities":[
+  "objects": [
     {
-      "type": "player",
+      "objectType": "DGO",
       "sprite": "assets/robot.bmp",
       "xpos": 300,
       "ypos": 450,
       "transparent": true,
       "direction": -1
     }
-   
+
   ]
 
 }

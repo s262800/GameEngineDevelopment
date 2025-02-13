@@ -16,7 +16,7 @@
     <Filter Include="Resource Files\IMGUI">
       <UniqueIdentifier>{0d2fde9e-e6d4-4922-b519-ae89981bf87d}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\JSON Files">
+    <Filter Include="Resource Files\JSON Files">
       <UniqueIdentifier>{8e322ab0-5cca-4456-82e2-8540be649889}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
@@ -85,6 +85,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="SceneHierachyUI.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneData.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -161,11 +164,14 @@
     <ClInclude Include="ConstantValues.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="SceneData.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
     <None Include="assets\Levels\Level1.json">
-      <Filter>Header Files\JSON Files</Filter>
+      <Filter>Resource Files\JSON Files</Filter>
     </None>
   </ItemGroup>
 </Project>

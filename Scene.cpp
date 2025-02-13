@@ -3,6 +3,21 @@
 
 //Functions for creating objects
 
+Scene::Scene()
+{
+	sceneData.GetSceneData();
+
+	for (GenericObject obj : sceneData.GetSceneData().objectsInScene)
+	{
+		if (obj.type == ObjectType::EmptyRenderable)
+		{
+
+		}
+
+	}
+
+}
+
 Bitmap* Scene::CreateBitmap(SDL_Renderer* renderer, std::string fileName, int xpos, int ypos, bool useTransparency = false)
 {
 	Bitmap* bmp = new Bitmap(renderer, fileName, xpos, ypos, useTransparency);
