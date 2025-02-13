@@ -21,7 +21,7 @@ public:
 	std::string sceneFilePath;
 	SceneData sceneData;
 
-	Scene();
+	Scene(SDL_Renderer* renderer);
 	
 	//Create Objects
 	Bitmap* CreateBitmap(SDL_Renderer* renderer, std::string fileName, int xpos, int ypos, bool useTransparency);

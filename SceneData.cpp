@@ -42,6 +42,8 @@ ObjectType SceneData::getObjectEnumType(const std::string& type)
 	
 	if (type == "ER")
 		return ObjectType::EmptyRenderable;
+	if (type == "Player")
+		return ObjectType::PlayerObject;
 	
 	else
 	{

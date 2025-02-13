@@ -12,7 +12,8 @@ using ordered_json = nlohmann::ordered_json;
 
 		EmptyRenderable,
 		DynamicGameObject,
-		StaticGameObject
+		StaticGameObject,
+		PlayerObject
 	};
 
 	struct GenericObject {
@@ -24,7 +25,7 @@ using ordered_json = nlohmann::ordered_json;
 		bool isTransparent;
 	};
 
-	struct Scene {
+	struct SceneValues {
 		std::string sceneName;
 		std::vector<GenericObject> objectsInScene;
 
@@ -35,11 +36,11 @@ using ordered_json = nlohmann::ordered_json;
 	{
 	public:
 		void ReadSceneValues(std::string sceneFilePath);
-		Scene GetSceneData() { return currentScene; };
+		SceneValues GetSceneData() { return currentScene; };
 
 
 	private:
-		Scene currentScene;
+		SceneValues currentScene;
 		ObjectType getObjectEnumType(const std::string& type);
 
 	};

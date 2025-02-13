@@ -3,7 +3,7 @@
 
 //Functions for creating objects
 
-Scene::Scene()
+Scene::Scene(SDL_Renderer* renderer)
 {
 	sceneData.GetSceneData();
 
@@ -11,7 +11,22 @@ Scene::Scene()
 	{
 		if (obj.type == ObjectType::EmptyRenderable)
 		{
+			CreateBitmap(renderer, obj.fileName, obj.xPos, obj.yPos, obj.isTransparent);
+		}
 
+		if (obj.type == ObjectType::StaticGameObject)
+		{
+			CreateStaticGameObject(renderer, obj.fileName, obj.xPos, obj.yPos, obj.isTransparent);
+		}
+
+		if (obj.type == ObjectType::DynamicGameObject)
+		{
+			CreateDynamicGameObject(renderer, obj.fileName, obj.xPos, obj.yPos, obj.isTransparent);
+		}
+
+		if (obj.type == ObjectType::PlayerObject)
+		{
+			CreatePlayer(renderer, obj.fileName, obj.xPos, obj.yPos, obj.isTransparent);
 		}
 
 	}
