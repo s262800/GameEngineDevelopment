@@ -186,6 +186,7 @@
     <ClInclude Include="Libraries\imgui_sdl-master\imgui_sdl.h" />
     <ClInclude Include="Logger.h" />
     <ClInclude Include="Player.h" />
+    <ClInclude Include="Renderer.hpp" />
     <ClInclude Include="Scene.h" />
     <ClInclude Include="SceneData.h" />
     <ClInclude Include="SceneHierachyUI.h" />
@@ -193,6 +194,7 @@
     <ClInclude Include="Text.hpp" />
     <ClInclude Include="TextureManager.h" />
     <ClInclude Include="Transform.hpp" />
+    <ClInclude Include="Window.hpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="assets\Levels\Level1.json" />

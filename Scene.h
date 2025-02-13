@@ -36,10 +36,6 @@ public:
 	void UpdateAll();
 	void DrawAll();
 	
-
-	//Create the renderer and window
-	SDL_Renderer* CreateRenderer(SDL_Window* window);
-	SDL_Window* CreateWindow(const char* windowName);
 	
 	void SetVectors(std::vector<Bitmap*> bmps, std::vector<StaticGameObject*> sGOs, std::vector<DynamicGameObject*> dGos);
 	

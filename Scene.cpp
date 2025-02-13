@@ -111,64 +111,7 @@ void Scene::DrawAll()
 
 }
 
-SDL_Window* Scene::CreateWindow(const char* windowName)
-{
-	SDL_Window* window;
 
-	//create the window
-	window = SDL_CreateWindow(
-		windowName, //title
-		screenPosX, //initial x pos
-		screenPosY, //initial y pos
-		screenW, //width, in pixelss
-		screenH, //height, in pixels
-		0 // window behaviour flags
-	);
-
-
-	if (!window)
-	{
-		std::string error = ("WINDOW initialisation failed: %s\n", SDL_GetError());
-		Logger::Error(error);
-;		printf("Press any key to continue\n");
-		getchar();
-
-		return nullptr;
-
-	}
-
-	return window;
-}
-
-
-SDL_Renderer* Scene::CreateRenderer(SDL_Window* window)
-{
-	SDL_Renderer* renderer;
-	
-	//create renderer
-	renderer = SDL_CreateRenderer(
-		window,
-		-1,
-		0
-
-	);
-
-	if (!renderer)
-	{
-		std::string error = ("RENDERER intialisation failed: %\n", SDL_GetError());
-		Logger::Error(error);
-		printf("Press any key to continue \n");
-
-
-		getchar();
-
-		return nullptr;
-	}
-
-	return renderer;
-
-
-}
 
 void Scene::SetVectors(std::vector<Bitmap*> bmps, std::vector<StaticGameObject*> sGOs, std::vector<DynamicGameObject*> dGos)
 {

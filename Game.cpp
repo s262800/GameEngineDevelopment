@@ -6,15 +6,21 @@
 #include "backends/imgui_impl_sdl.h"
 #include "imgui_sdl.h"
 #include "imgui_internal.h"
+#include "Renderer.hpp"
+#include "Window.hpp"
 
 
 
 Game::Game()
 {
-	m_Window = nullptr;
-	m_Renderer = nullptr;
+	Window* windowClass = new Window();
+	m_Window = windowClass->CreateWindow("Window1");
 
-	scene = new Scene();
+	Renderer* rendererClass = new Renderer();
+	m_Renderer = rendererClass->CreateRenderer(m_Window);
+
+
+	scene = new Scene(m_Renderer);
 	textManager = new Text();
 	input = new Input();
 	events = new Events();
@@ -23,8 +29,7 @@ Game::Game()
 	SDL_Init(SDL_INIT_VIDEO);	
 	TTF_Init();
 
-	m_Window = scene->CreateWindow("My Window");
-	m_Renderer = scene->CreateRenderer(m_Window);
+
 	SetDisplayColour(127, 127, 127, 255);
 	assetEditor = new AssetEditor(m_Renderer, m_Window);
 	sceneHierachyUI = new SceneHierachyUI(scene);
