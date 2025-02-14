@@ -8,19 +8,21 @@ Scene::Scene(SDL_Renderer* renderer, SceneNames sceneName)
 	std::vector<DynamicGameObject*> dgos;
 	std::vector<StaticGameObject*> sgos;
 	std::vector<Bitmap*> ers;
+	std::vector<Player*> players;
 
 
 	for (GenericObject obj : sceneData.GetSceneData(sceneName).objectsInScene)
 	{
 		if (obj.type == ObjectType::EmptyRenderable)
 		{
-			ers.emplace_back(CreateBitmap(renderer, obj.fileName, obj.xPos, obj.yPos, obj.isTransparent));
-		
+			Bitmap* er = ers.emplace_back(CreateBitmap(renderer, obj.fileName, obj.xPos, obj.yPos, obj.isTransparent));
+	
 		}
 
 		if (obj.type == ObjectType::StaticGameObject)
 		{
-			sgos.emplace_back(CreateStaticGameObject(renderer, obj.fileName, obj.xPos, obj.yPos, obj.isTransparent));
+			StaticGameObject* sgo = sgos.emplace_back(CreateStaticGameObject(renderer, obj.fileName, obj.xPos, obj.yPos, obj.isTransparent));
+
 		}
 
 		if (obj.type == ObjectType::DynamicGameObject)
@@ -30,7 +32,7 @@ Scene::Scene(SDL_Renderer* renderer, SceneNames sceneName)
 
 		if (obj.type == ObjectType::PlayerObject)
 		{
-			player = CreatePlayer(renderer, obj.fileName, obj.xPos, obj.yPos, obj.isTransparent);
+			players.emplace_back(CreatePlayer(renderer, obj.fileName, obj.xPos, obj.yPos, obj.isTransparent));
 		}
 	}
 
@@ -56,8 +58,8 @@ DynamicGameObject* Scene::CreateDynamicGameObject(SDL_Renderer* renderer, std::s
 
 Player* Scene::CreatePlayer(SDL_Renderer* renderer, std::string fileName, int xpos, int ypos, bool useTransparency)
 {
-	player = new Player(renderer, fileName, xpos, ypos, useTransparency);
-	return player;
+	Player* p = new Player(renderer, fileName, xpos, ypos, useTransparency);
+	return p;
 
 
 }
@@ -98,6 +100,7 @@ void Scene::SetVectors(std::vector<Bitmap*> bmps, std::vector<StaticGameObject*>
 		Logger::Error("No dynamic gameobjects in scene");
 }
 
+
 void Scene::UpdateAll()
 {
 	for (auto dGO : GetDynamicGameObjects())
@@ -105,9 +108,9 @@ void Scene::UpdateAll()
 		dGO->Update();
 	}
 	
-	if (player != nullptr)
+	for (auto p : GetPlayers())
 	{
-		player->Update();
+		p->Update();
 	}
 }
 
@@ -126,9 +129,9 @@ void Scene::DrawAll()
 		eR->Draw();
 	}
 
-	if (player != nullptr)
+	for (auto p : GetPlayers())
 	{
-		player->Draw();
+		p->Draw();
 	}
 
 

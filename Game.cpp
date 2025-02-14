@@ -42,8 +42,6 @@ Game::Game()
 
 
 
-
-
 	//player = scene->CreatePlayer(m_Renderer, "assets/robot.bmp", 100, 100, true);
 	//player->obj_transform->SetScale(2, 2);
 	//StaticGameObject* s = scene->CreateStaticGameObject(m_Renderer, "assets/robot.bmp", 200, 100, true);
@@ -95,12 +93,12 @@ void Game::Update(void)
 
 	scene->DrawAll();
 	scene->UpdateAll();
+	UpdatePLayers();
+
+
 
 	textManager->SetAllText(m_Renderer);
 
-	player->SetGrounded(player->GetCollider()->CheckCollision(ground1->GetCollider()));
-
-	//player->FixGroundCollision(ground1->GetCollider());
 
 	//GUI
 	ImGui::NewFrame();
@@ -152,7 +150,7 @@ void Game::CheckEvents()
 		switch (key)
 		{
 		case SDLK_SPACE:
-			events->FireEvent(E_PLAYER_JUMP, new IEvent(E_PLAYER_JUMP), player);
+			events->FireEvent(E_PLAYER_JUMP, new IEvent(E_PLAYER_JUMP), players[0]);
 			break;
 		case SDLK_ESCAPE:
 			isRunning = false;
@@ -164,6 +162,14 @@ void Game::CheckEvents()
 
 	}
 
+}
+
+void Game::UpdatePLayers()
+{
+	for (Player* p : players)
+	{
+		p->SetGrounded(p->GetCollider()->CheckCollision(ground1->GetCollider()));
+	}
 }
 
 
@@ -188,6 +194,8 @@ void Game::SetDisplayColour(int r, int g, int b, int a)
 	}
 
 }
+
+
 
 
 

@@ -42,13 +42,13 @@ public:
 	std::vector<Bitmap*> GetEmptyRenderables() { return EmptyRenderables; }
 	std::vector<StaticGameObject*> GetStaticGameObjects() { return StaticGameObjects; }
 	std::vector<DynamicGameObject*> GetDynamicGameObjects() { return DynamicGameObjects; }
-
-	Player* player;
+	std::vector<Player*> GetPlayers() { return Players; }
 
 private:
 	std::vector<Bitmap*> EmptyRenderables;
 	std::vector<StaticGameObject*> StaticGameObjects;
 	std::vector<DynamicGameObject*> DynamicGameObjects;
+	std::vector<Player*> Players;
 	
 
 

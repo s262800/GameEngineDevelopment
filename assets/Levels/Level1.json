@@ -2,12 +2,27 @@
   "name": "Level 1",
   "objects": [
     {
-      "objectType": "DGO",
+      "objectName": "player",
+      "objectType": "Player",
       "sprite": "assets/robot.bmp",
       "xpos": 300,
       "ypos": 450,
+      "xScale": 1,
+      "yScale": 1,
       "transparent": true,
       "direction": -1
+    },
+    {
+      "objectName": "ground",
+      "objectType": "sgo",
+      "sprite": "assets/groundTile1.bmp",
+      "xpos": 300,
+      "ypos": 800,
+      "xScale": 2,
+      "yScale": 1,
+      "transparent": true,
+      "direction": -1
+
     }
 
   ]

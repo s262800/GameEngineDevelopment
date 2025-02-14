@@ -1,6 +1,17 @@
 #pragma once
 #include <vector>
 
+
+struct ObjectTransform
+{
+	int xPos = 0;
+	int yPos = 0;
+	float xScale = 1;
+	float yScale = 1;
+	float xRot = 0;
+	float yRot = 0;
+};
+
 class Transform
 {
 
@@ -23,7 +34,15 @@ public:
 	{
 	}
 
-
+	void SetObjectTransform(ObjectTransform* ot)
+	{
+		posX = ot->xPos;
+		posY = ot->yPos;
+		scaleX = ot->xScale;
+		scaleY = ot->yScale;
+		rotX = ot->xRot;
+		rotY = ot->yRot;
+	}
 
 	void SetPosition(float x, float y)
 	{

@@ -30,7 +30,7 @@ private:
 	AssetEditor* assetEditor;
 
 	Text* textManager;
-	Player* player;
+	std::vector<Player*> players;
 	StaticGameObject* ground1;
 	SceneHierachyUI* sceneHierachyUI;
 public :
@@ -49,6 +49,7 @@ public :
 	void CheckEvents();
 	void Update(void);
 	void SetDisplayColour(int r, int g, int b, int a);
+	void UpdatePLayers();
 
 	bool isRunning = true;
 };

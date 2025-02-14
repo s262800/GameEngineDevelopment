@@ -19,10 +19,13 @@ void SceneData::ReadSceneValues(std::string sceneFilePath)
 	{
 		ObjectType objectType = getObjectEnumType(item["objectType"]);
 		currentScene.objectsInScene.emplace_back(
+			item["objectName"],
 			objectType,
 			item["sprite"],
 			item["xpos"],
 			item["ypos"],
+			item["xScale"],
+			item["yScale"],
 			item["direction"],
 			item["transparent"]
 		);
@@ -67,7 +70,6 @@ ObjectType SceneData::getObjectEnumType(const std::string& type)
 {
 	if (type == "DGO")
 		return ObjectType::DynamicGameObject;
-	
 
 	if (type == "STO")
 		return ObjectType::StaticGameObject;

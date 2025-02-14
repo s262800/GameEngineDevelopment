@@ -4,6 +4,8 @@
   "name": "Scene Name",
   "objects":[
     {
+
+      "objectName": "Object Name",
       "objectType": "objectType", (DGO -> Dynamic Game Object, STO -> Static Game Object, ER -> Empty Renderable, Player -> PlayerObject
       "sprite": "objects sprite filepath",
       "xpos": objects X pos,

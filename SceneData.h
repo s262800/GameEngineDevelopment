@@ -23,10 +23,13 @@ enum class ObjectType
 
 struct GenericObject 
 {
+	std::string ObjectName;
 	ObjectType type;
 	std::string fileName;
 	int xPos;
 	int yPos;
+	float xScale;
+	float yScale;
 	int direction;
 	bool isTransparent;
 };
