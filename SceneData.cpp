@@ -31,6 +31,38 @@ void SceneData::ReadSceneValues(std::string sceneFilePath)
 
 }
 
+SceneValues SceneData::GetSceneData(SceneNames sceneName)
+{
+	std::string filePath;
+	bool foundLevel = false;
+	switch (sceneName)
+	{
+	case SceneNames::LEVEL1:
+		filePath = "assets/Levels/Level1.json";
+		foundLevel = true;
+		break;
+	case SceneNames::LEVEL2:
+		filePath = "assets/Levels/Level2.json";
+		foundLevel = true;
+		break;
+	default:
+		break;
+
+	}
+
+	if (!foundLevel)
+	{
+		std::string error = "Level not found";
+		Logger::Error(error);
+		return currentScene;
+	}
+	
+	ReadSceneValues(filePath);
+	return currentScene;
+}
+
+
+
 ObjectType SceneData::getObjectEnumType(const std::string& type)
 {
 	if (type == "DGO")

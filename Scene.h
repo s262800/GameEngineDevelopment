@@ -12,6 +12,8 @@
 #include "Logger.h"
 #include "ConstantValues.h"
 #include "SceneData.h"
+#include "SceneNames.h"
+
 
 
 class Scene
@@ -21,17 +23,15 @@ public:
 	std::string sceneFilePath;
 	SceneData sceneData;
 
-	Scene(SDL_Renderer* renderer);
+	Scene(SDL_Renderer* renderer, SceneNames sceneName);
 	
 	//Create Objects
 	Bitmap* CreateBitmap(SDL_Renderer* renderer, std::string fileName, int xpos, int ypos, bool useTransparency);
 	DynamicGameObject* CreateDynamicGameObject(SDL_Renderer* renderer, std::string fileName, int xpos, int ypos, bool useTransparency = false);
 	StaticGameObject* CreateStaticGameObject(SDL_Renderer* renderer, std::string fileName, int xpos, int ypos, bool useTransparency = false);
-
 	Player* CreatePlayer(SDL_Renderer* renderer, std::string fileName, int xpos, int ypos, bool useTransparency = false);
-
-	void InitialiseObjectLists(std::vector<Bitmap*> bmps, std::vector<StaticGameObject*> sGOs, std::vector<DynamicGameObject*> dGos);
 	
+
 	//Update Objects
 	void UpdateAll();
 	void DrawAll();

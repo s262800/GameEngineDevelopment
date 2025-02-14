@@ -1,37 +1,44 @@
 #include "Scene.h"
 
 
-//Functions for creating objects
+//Constructor gets the scene data and creates the necessary objects
 
-Scene::Scene(SDL_Renderer* renderer)
+Scene::Scene(SDL_Renderer* renderer, SceneNames sceneName)
 {
-	sceneData.GetSceneData();
+	std::vector<DynamicGameObject*> dgos;
+	std::vector<StaticGameObject*> sgos;
+	std::vector<Bitmap*> ers;
 
-	for (GenericObject obj : sceneData.GetSceneData().objectsInScene)
+
+	for (GenericObject obj : sceneData.GetSceneData(sceneName).objectsInScene)
 	{
 		if (obj.type == ObjectType::EmptyRenderable)
 		{
-			CreateBitmap(renderer, obj.fileName, obj.xPos, obj.yPos, obj.isTransparent);
+			ers.emplace_back(CreateBitmap(renderer, obj.fileName, obj.xPos, obj.yPos, obj.isTransparent));
+		
 		}
 
 		if (obj.type == ObjectType::StaticGameObject)
 		{
-			CreateStaticGameObject(renderer, obj.fileName, obj.xPos, obj.yPos, obj.isTransparent);
+			sgos.emplace_back(CreateStaticGameObject(renderer, obj.fileName, obj.xPos, obj.yPos, obj.isTransparent));
 		}
 
 		if (obj.type == ObjectType::DynamicGameObject)
 		{
-			CreateDynamicGameObject(renderer, obj.fileName, obj.xPos, obj.yPos, obj.isTransparent);
+			dgos.emplace_back(CreateDynamicGameObject(renderer, obj.fileName, obj.xPos, obj.yPos, obj.isTransparent));
 		}
 
 		if (obj.type == ObjectType::PlayerObject)
 		{
-			CreatePlayer(renderer, obj.fileName, obj.xPos, obj.yPos, obj.isTransparent);
+			player = CreatePlayer(renderer, obj.fileName, obj.xPos, obj.yPos, obj.isTransparent);
 		}
-
 	}
 
+	SetVectors(ers, sgos, dgos);
+
 }
+
+//Functions for creating objects
 
 Bitmap* Scene::CreateBitmap(SDL_Renderer* renderer, std::string fileName, int xpos, int ypos, bool useTransparency = false)
 {
@@ -66,13 +73,29 @@ StaticGameObject* Scene::CreateStaticGameObject(SDL_Renderer* renderer, std::str
 
 //Functions for managing objects in scene
 
-void Scene::InitialiseObjectLists(std::vector<Bitmap*> bmps, std::vector<StaticGameObject*> sGOs, std::vector<DynamicGameObject*> dGOs)
+void Scene::SetVectors(std::vector<Bitmap*> bmps, std::vector<StaticGameObject*> sGOs, std::vector<DynamicGameObject*> dGos)
 {
-	
-	SetVectors(bmps, sGOs, dGOs);
+	if (!bmps.empty())
+	{
+		EmptyRenderables.assign(bmps.begin(), bmps.end());
+	}
 
+	else
+		Logger::Error("No bitmaps in scene");
 
+	if (!sGOs.empty())
+	{
+		StaticGameObjects.assign(sGOs.begin(), sGOs.end());
+	}
+	else
+		Logger::Error("No static gameobjects in scene");
 
+	if (!dGos.empty())
+	{
+		DynamicGameObjects.assign(dGos.begin(), dGos.end());
+	}
+	else
+		Logger::Error("No dynamic gameobjects in scene");
 }
 
 void Scene::UpdateAll()
@@ -112,31 +135,6 @@ void Scene::DrawAll()
 }
 
 
-
-void Scene::SetVectors(std::vector<Bitmap*> bmps, std::vector<StaticGameObject*> sGOs, std::vector<DynamicGameObject*> dGos)
-{
-	if (!bmps.empty())
-	{
-		EmptyRenderables.assign(bmps.begin(), bmps.end());
-	}
-
-	else
-		Logger::Error("No bitmaps in scene");
-
-	if (!sGOs.empty())
-	{
-		StaticGameObjects.assign(sGOs.begin(), sGOs.end());
-	}
-	else
-		Logger::Error("No static gameobjects in scene");
-
-	if (!dGos.empty())
-	{
-		DynamicGameObjects.assign(dGos.begin(), dGos.end());
-	}
-	else
-		Logger::Error("No dynamic gameobjects in scene");
-}
 
 
 

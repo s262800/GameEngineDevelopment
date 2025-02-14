@@ -20,7 +20,7 @@ Game::Game()
 	m_Renderer = rendererClass->CreateRenderer(m_Window);
 
 
-	scene = new Scene(m_Renderer);
+	scene = new Scene(m_Renderer, SceneNames::LEVEL1);
 	textManager = new Text();
 	input = new Input();
 	events = new Events();
@@ -35,29 +35,29 @@ Game::Game()
 	sceneHierachyUI = new SceneHierachyUI(scene);
 	textManager->OpenFonts();
 
-	//test objects
+	////test objects
 
-	ground1 = scene->CreateStaticGameObject(m_Renderer, "assets/groundTile1.bmp", 70, 670, true);
-	ground1->obj_transform->SetScale(12, 4);
-
-
+	//ground1 = scene->CreateStaticGameObject(m_Renderer, "assets/groundTile1.bmp", 70, 670, true);
+	//ground1->obj_transform->SetScale(12, 4);
 
 
 
-	player = scene->CreatePlayer(m_Renderer, "assets/robot.bmp", 100, 100, true);
-	player->obj_transform->SetScale(2, 2);
-	StaticGameObject* s = scene->CreateStaticGameObject(m_Renderer, "assets/robot.bmp", 200, 100, true);
 
-	std::vector<StaticGameObject*> sgos;
-	std::vector<Bitmap*> bmps;
-	std::vector<DynamicGameObject*> dgos;
-	sgos.push_back(ground1);
-	//
+
+	//player = scene->CreatePlayer(m_Renderer, "assets/robot.bmp", 100, 100, true);
+	//player->obj_transform->SetScale(2, 2);
+	//StaticGameObject* s = scene->CreateStaticGameObject(m_Renderer, "assets/robot.bmp", 200, 100, true);
+
+	//std::vector<StaticGameObject*> sgos;
+	//std::vector<Bitmap*> bmps;
+	//std::vector<DynamicGameObject*> dgos;
+	//sgos.push_back(ground1);
+	////
 
 
 	//Initialise objects in the scene and draw them
 
-	scene->InitialiseObjectLists(bmps, sgos, dgos);
+	//scene->InitialiseObjectLists(bmps, sgos, dgos);
 	scene->DrawAll();
 
 

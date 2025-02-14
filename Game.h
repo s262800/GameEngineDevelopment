@@ -13,6 +13,7 @@
 #include "Input.h"
 #include "SceneHierachyUI.h"
 #include "AssetEditor.h"
+#include "SceneNames.h"
 
 using namespace std;
 using namespace GUI;
