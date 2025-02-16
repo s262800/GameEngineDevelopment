@@ -7,7 +7,7 @@ DynamicGameObject::DynamicGameObject(SDL_Renderer* renderer, std::string fileNam
 {
 	
 	//Set transform
-	obj_transform = new Transform(xpos, ypos);
+	//obj_transform = new Transform(xpos, ypos);
 	
 
 

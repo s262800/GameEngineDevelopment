@@ -14,20 +14,17 @@ struct ObjectTransform
 
 class Transform
 {
-
 private:
 	
 	float posX, posY;
 	float scaleX, scaleY;
 	float rotX = 0, rotY = 0;
 
+
 public:
 	
-	Transform(float pX, float pY, float sX = 1, float sY = 1, float rX = 0, float rY = 0)
+	Transform()
 	{
-		SetPosition(pX, pY);
-		SetScale(sX, sY);
-		SetRotation(rX, rY);
 	}
 
 	~Transform()

@@ -5,7 +5,10 @@
 
 Events::Events()
 {
+   // players.emplace_back(playersInScene.begin(), playersInScene.end());
+    
     AddListener(E_PLAYER_JUMP, new IEventHandler());
+
 }
 
 bool Events::AddListener(EventType type, IEventHandler* listener)
@@ -14,47 +17,57 @@ bool Events::AddListener(EventType type, IEventHandler* listener)
     return true;
 }
 
-void Events::FireEvent(EventType type, IEvent* event)
+//Called in game
+void Events::FireEvent(IEvent* event)
 {
-    for (IEventHandler* handler : listeners[type])
+    for (IEventHandler* handler : listeners[event->type])
     {
-        handler->OnEvent(event, nullptr);
+        handler->OnEvent(event);
     }
+
 }
 
-void Events::FireEvent(EventType type, IEvent* event, Player* player)
-{
-    Logger::Info("Fired event with player");
-    player = player;
-    for (IEventHandler* handler : listeners[type])
-    {
-        handler->OnEvent(event, player);
-    }
-}
 
-IEvent::IEvent(EventType eventType)
+IEvent::IEvent(EventType eventType, std::vector<DynamicGameObject*> objsToAffect, std::vector<Player*> psToAffect)
 {
     type = eventType;
+    objectsToAffect = objsToAffect;
+    playersToAffect = psToAffect;
 }
 
-void IEventHandler::OnEvent(IEvent* event, Player* player)
+IEvent::IEvent(EventType eventType, std::vector<DynamicGameObject*> objsToAffect)
 {
-    switch (event->type)
-    {
-    case E_PLAYER_MOVE:
-        //
-        break;
+    type = eventType;
+    objectsToAffect = objsToAffect;
+}
 
-    case E_PLAYER_JUMP:
-        player->Jump();
-        break;
+IEvent::IEvent(EventType eventType, std::vector<Player*> psToAffect)
+{
+    type = eventType;
+    playersToAffect = psToAffect;
+}
 
-        // ...
+void IEventHandler::OnEvent(IEvent* event)
+{
+        switch (event->type)
+        {
+        case E_PLAYER_MOVE:
+            //
+            break;
 
-    default:
-        break;
-    }
+        case E_PLAYER_JUMP:
+            for (Player* p : event->playersToAffect)
+            {
+                p->Jump();
+            }
 
+            break;
+
+        default:
+            break;
+        }
+
+    
 }
 
 

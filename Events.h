@@ -41,9 +41,13 @@ enum EventType
 class IEvent
 {
 public:
-    IEvent(EventType eventType);
+    IEvent(EventType eventType, std::vector<DynamicGameObject*> objsToAffect, std::vector<Player*> psToAffect);
+    IEvent(EventType eventType, std::vector<DynamicGameObject*> objsToAffect);
+    IEvent(EventType eventType, std::vector<Player*> psToAffect);
+
     EventType type;
-    
+    std::vector<DynamicGameObject*> objectsToAffect;
+    std::vector<Player*> playersToAffect;
 
 };
 
@@ -52,7 +56,10 @@ public:
 class IEventHandler
 {
 public:
-    void OnEvent(IEvent* event, Player* player);
+
+    void OnEvent(IEvent* event);
+private:
+
 };
 
 
@@ -66,13 +73,12 @@ public:
     Events();
     bool AddListener(EventType type, IEventHandler* listener);
 
-    void FireEvent(EventType type, IEvent* event);
-    void FireEvent(EventType type, IEvent* event, Player* player);
+    void FireEvent(IEvent* event);
+
 
 
 private:
 	eventMap listeners;
-    Player* player = nullptr;
 };
 
 

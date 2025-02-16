@@ -1,13 +1,13 @@
 #pragma once
+#include "box2d/box2d.h"
 
 class Collider
 {
 public:
-	Collider(float w, float h, float x, float y);
+
 	~Collider();
 	
 	bool CheckCollision(Collider* Other);
-	
 
 
 private:

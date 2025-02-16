@@ -23,6 +23,9 @@ public:
 	void Draw();
 	SDL_Texture* GetTextureRef();
 
+	float GetBitmapWidth(){ return m_w; };
+	float GetBitmapHeight() { return m_h; };
+
 	std::string FileName = "";
 
 	Transform* obj_transform;

@@ -7,7 +7,7 @@ using namespace std;
 
 Bitmap::Bitmap(SDL_Renderer* renderer, std::string fileName, int xpos, int ypos, bool useTransparency)
 {
-	obj_transform = new Transform(xpos, ypos);
+	//obj_transform = new Transform(xpos, ypos);
 	//Store renderer and file name variables
 	m_pRenderer = renderer;
 	FileName = fileName;
@@ -49,7 +49,7 @@ Collider* Bitmap::GetCollider()
 
 void Bitmap::SetCollider()
 {
-	collider = new Collider(m_w, m_h, m_x, m_y);
+	//collider = new Collider(m_w, m_h, m_x, m_y);
 }
 
 void Bitmap::Draw()

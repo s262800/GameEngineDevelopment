@@ -10,7 +10,6 @@
 #include "Window.hpp"
 
 
-
 Game::Game()
 {
 	Window* windowClass = new Window();
@@ -21,9 +20,11 @@ Game::Game()
 
 
 	scene = new Scene(m_Renderer, SceneNames::LEVEL1);
+	players = scene->GetPlayers();
 	textManager = new Text();
 	input = new Input();
 	events = new Events();
+	
 
 	//start up
 	SDL_Init(SDL_INIT_VIDEO);	
@@ -150,7 +151,7 @@ void Game::CheckEvents()
 		switch (key)
 		{
 		case SDLK_SPACE:
-			events->FireEvent(E_PLAYER_JUMP, new IEvent(E_PLAYER_JUMP), players[0]);
+			events->FireEvent(new IEvent(E_PLAYER_JUMP, players));
 			break;
 		case SDLK_ESCAPE:
 			isRunning = false;
