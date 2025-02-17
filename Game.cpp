@@ -96,8 +96,6 @@ void Game::Update(void)
 	scene->UpdateAll();
 	UpdatePLayers();
 
-
-
 	textManager->SetAllText(m_Renderer);
 
 

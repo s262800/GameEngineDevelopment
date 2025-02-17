@@ -8,7 +8,7 @@ var annotated_dup =
     [ "Collider", "class_collider.html", null ],
     [ "DynamicGameObject", "class_dynamic_game_object.html", null ],
     [ "Events", "class_events.html", null ],
-    [ "Game", "class_game.html", null ],
+    [ "Game", "class_game.html", "class_game" ],
     [ "GenericObject", "struct_generic_object.html", null ],
     [ "IEvent", "class_i_event.html", null ],
     [ "IEventHandler", "class_i_event_handler.html", null ],
@@ -16,7 +16,7 @@ var annotated_dup =
     [ "Logger", "class_logger.html", null ],
     [ "ObjectTransform", "struct_object_transform.html", null ],
     [ "Player", "class_player.html", null ],
-    [ "Renderer", "class_renderer.html", null ],
+    [ "Renderer", "class_renderer.html", "class_renderer" ],
     [ "Scene", "class_scene.html", null ],
     [ "SceneData", "class_scene_data.html", null ],
     [ "SceneValues", "struct_scene_values.html", null ],
@@ -26,5 +26,5 @@ var annotated_dup =
     [ "TextureManager", "class_texture_manager.html", null ],
     [ "Transform", "class_transform.html", null ],
     [ "Variant", "struct_variant.html", null ],
-    [ "Window", "class_window.html", null ]
+    [ "Window", "class_window.html", "class_window" ]
 ];

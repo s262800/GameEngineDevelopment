@@ -3,9 +3,20 @@
 #include "ConstantValues.h"
 #include "Logger.h"
 
+/**
+* Window class.
+* This class handles creation for an sdl window
+*/
+
 class Window
 {
 public:
+/**
+* This method handles the creation of a window, getting the resolution from constant values
+* @param windowName Passes in a window name when the function is called
+* @return Returns a pointer to the SDL Window
+*/
+
 	SDL_Window* CreateWindow(const char* windowName)
 	{
 

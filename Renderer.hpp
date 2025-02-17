@@ -3,10 +3,19 @@
 #include <SDL.h>
 #include "Logger.h"
 
+/**
+* Renderer class.
+* This class handles creation for an sdl renderer
+*/
+
 class Renderer
 {
 public:
-
+	/**
+* This method handles the creation of a renderer
+* @param window Passes in an SDL Window when the function is called
+* @return Returns a pointer to the SDL Renderer
+*/
 
 	SDL_Renderer* CreateRenderer(SDL_Window* window)
 	{
