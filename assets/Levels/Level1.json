@@ -15,7 +15,7 @@
     },
     {
       "objectName": "ground",
-      "objectType": "sgo",
+      "objectType": "SGO",
       "sprite": "assets/groundTile1.bmp",
       "xpos": 300,
       "ypos": 800,

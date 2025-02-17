@@ -71,7 +71,7 @@ ObjectType SceneData::getObjectEnumType(const std::string& type)
 	if (type == "DGO")
 		return ObjectType::DynamicGameObject;
 
-	if (type == "STO")
+	if (type == "SGO")
 		return ObjectType::StaticGameObject;
 	
 	if (type == "ER")

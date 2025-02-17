@@ -33,7 +33,7 @@ IEvent::IEvent(EventType eventType, std::vector<DynamicGameObject*> objsToAffect
     type = eventType;
     objectsToAffect = objsToAffect;
     playersToAffect = psToAffect;
-}
+} 
 
 IEvent::IEvent(EventType eventType, std::vector<DynamicGameObject*> objsToAffect)
 {
@@ -69,5 +69,9 @@ void IEventHandler::OnEvent(IEvent* event)
 
     
 }
+
+//move on events switch to objects
+//objects inherit from ieventhandler
+
 
 
