@@ -84,6 +84,7 @@ public:
 	float GetXScale() const
 	{
 		return scaleX;
+		return scaleX;
 	}
 
 	float GetYScale() const

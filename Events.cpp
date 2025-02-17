@@ -28,47 +28,11 @@ void Events::FireEvent(IEvent* event)
 }
 
 
-IEvent::IEvent(EventType eventType, std::vector<DynamicGameObject*> objsToAffect, std::vector<Player*> psToAffect)
+IEvent::IEvent(EventType eventType)
 {
     type = eventType;
-    objectsToAffect = objsToAffect;
-    playersToAffect = psToAffect;
-} 
-
-IEvent::IEvent(EventType eventType, std::vector<DynamicGameObject*> objsToAffect)
-{
-    type = eventType;
-    objectsToAffect = objsToAffect;
 }
 
-IEvent::IEvent(EventType eventType, std::vector<Player*> psToAffect)
-{
-    type = eventType;
-    playersToAffect = psToAffect;
-}
-
-void IEventHandler::OnEvent(IEvent* event)
-{
-        switch (event->type)
-        {
-        case E_PLAYER_MOVE:
-            //
-            break;
-
-        case E_PLAYER_JUMP:
-            for (Player* p : event->playersToAffect)
-            {
-                p->Jump();
-            }
-
-            break;
-
-        default:
-            break;
-        }
-
-    
-}
 
 //move on events switch to objects
 //objects inherit from ieventhandler

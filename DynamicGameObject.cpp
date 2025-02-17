@@ -30,6 +30,31 @@ DynamicGameObject::~DynamicGameObject()
 	 isGrounded = grounded;
  }
 
+ void DynamicGameObject::OnEvent(IEvent* event)
+ {
+     //{
+     //    switch (event->type)
+     //    {
+     //    case:
+     //        // 
+     //        break;
+
+     //          case E_PLAYER_JUMP:
+     //                for (Player* p : event->playersToAffect)
+     //                 {
+     //                     p->Jump();
+     //                 }
+
+     //        break;
+
+     //    default:
+     //        break;
+     //    }
+
+
+     //}
+ }
+
  //Collider* DynamicGameObject::GetCollider()
  //{
 	// if (collider == nullptr) return nullptr;

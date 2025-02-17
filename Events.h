@@ -1,5 +1,4 @@
 #pragma once
-#include "Player.h"
 #include <map>
 #include "Logger.h"
 
@@ -41,14 +40,9 @@ enum EventType
 class IEvent
 {
 public:
-    IEvent(EventType eventType, std::vector<DynamicGameObject*> objsToAffect, std::vector<Player*> psToAffect);
-    IEvent(EventType eventType, std::vector<DynamicGameObject*> objsToAffect);
-    IEvent(EventType eventType, std::vector<Player*> psToAffect);
+    IEvent(EventType eventType);
 
     EventType type;
-    std::vector<DynamicGameObject*> objectsToAffect;
-    std::vector<Player*> playersToAffect;
-
 };
 
 
@@ -57,7 +51,7 @@ class IEventHandler
 {
 public:
 
-    void OnEvent(IEvent* event);
+    virtual void OnEvent(IEvent* event);
 private:
 
 };

@@ -149,7 +149,7 @@ void Game::CheckEvents()
 		switch (key)
 		{
 		case SDLK_SPACE:
-			events->FireEvent(new IEvent(E_PLAYER_JUMP, players));
+			events->FireEvent(new IEvent(E_PLAYER_JUMP));
 			break;
 		case SDLK_ESCAPE:
 			isRunning = false;
